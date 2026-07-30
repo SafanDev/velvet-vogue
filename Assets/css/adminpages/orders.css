@@ -1,0 +1,79 @@
+/* ==========================================================================
+   VELVET VOGUE - ORDERS CSS
+   ========================================================================== */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.massive-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; color: #fff;}
+.simple-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #e0e0e0; display: block;}
+.badge-count { background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); padding: 4px 12px; border-radius: 20px; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;}
+
+/* ==========================================
+   SPOTLIGHT 3D METRIC CARDS
+   ========================================== */
+.metric-card {
+  background: #080808; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 20px; display: flex; align-items: center; gap: 15px; position: relative; overflow: hidden; will-change: transform; transform-style: preserve-3d; cursor: default;
+}
+.metric-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.1), transparent 40%); opacity: 0; transition: opacity 0.4s ease; z-index: 0; pointer-events: none;}
+.metric-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: radial-gradient(200px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.6), transparent 40%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: 0; transition: opacity 0.4s ease; z-index: 1; pointer-events: none;}
+.metric-card:hover::before, .metric-card:hover::after { opacity: 1; }
+.metric-card:hover { z-index: 10; box-shadow: 0 15px 30px rgba(0, 0, 0, 0.9), 0 0 20px rgba(212, 175, 55, 0.05); }
+
+.metric-icon { font-size: 1.8rem; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2; transform: translateZ(30px); }
+.metric-card:hover .metric-icon { transform: translateZ(40px) scale(1.1); }
+.metric-info { position: relative; z-index: 2; display: flex; flex-direction: column; transform: translateZ(20px); }
+
+.metric-label { font-size: 0.7rem; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 3px; font-weight: 600;}
+.metric-value { font-family: var(--font-heading); font-size: 1.6rem; color: #fff; line-height: 1; font-weight: 700; }
+.metric-suffix { font-family: var(--font-body); font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-left: 5px; font-weight: 500; }
+
+/* Tactical Search */
+.tactical-search { position: relative; width: 300px; }
+.search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #666; font-size: 0.8rem; pointer-events: none; transition: 0.3s;}
+.search-input { width: 100%; background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; padding: 10px 15px 10px 35px; border-radius: 4px; font-family: var(--font-body); font-size: 0.8rem; transition: 0.3s; outline: none; }
+.search-input::placeholder { color: #666; }
+.search-input:focus { border-color: var(--color-gold-metallic); box-shadow: 0 0 10px rgba(212, 175, 55, 0.1); }
+.search-input:focus + .search-icon { color: var(--color-gold-metallic); }
+
+/* ==========================================
+   THE PURE SOLID LEDGER TABLE
+   ========================================== */
+.table-container-solid { background: #040404; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8); }
+.custom-ledger-table { border-collapse: separate; border-spacing: 0; width: 100%; }
+
+.custom-ledger-table th { font-family: var(--font-body); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: #888; padding: 18px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); background: #080808; font-weight: 600; white-space: nowrap; }
+.custom-ledger-table td { padding: 18px 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); vertical-align: middle; transition: all 0.3s ease; background: transparent; }
+
+.ledger-row { transition: all 0.3s ease; position: relative; }
+.ledger-row:hover td { background: rgba(255, 255, 255, 0.02); }
+.ledger-row:hover td:first-child { box-shadow: inset 3px 0 0 0 var(--color-gold-metallic); }
+
+.status-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; transition: 0.3s ease;}
+
+.elegant-select-wrapper { position: relative; display: inline-block; }
+.elegant-select {
+  appearance: none; -webkit-appearance: none; background: transparent; border: none;
+  color: inherit; font-family: var(--font-body); font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; cursor: pointer; outline: none; padding: 5px 0; transition: opacity 0.3s ease;
+}
+.elegant-select:hover { opacity: 0.7; }
+.elegant-select option { background: #111; color: #fff; font-weight: 500; }
+
+/* Status Text Colors */
+.status-pending, .pay-status-pending { color: #fff; }
+.status-processing { color: var(--color-cyan); }
+.status-shipped { color: #cbb8ff; }
+.status-delivered, .pay-status-paid { color: #2ecc71; }
+.status-cancelled, .status-returned, .pay-status-failed { color: #ff7675; }
+.pay-status-refunded { color: #f39c12; }
+
+/* Elegant Inspect Button */
+.btn-inspect { color: var(--color-gold-metallic); font-family: var(--font-body); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.3s ease; display: inline-flex; align-items: center; }
+.inspect-icon { margin-left: 8px; font-size: 0.8rem; transition: transform 0.3s ease; }
+.btn-inspect:hover { color: #fff; text-decoration: none; }
+.btn-inspect:hover .inspect-icon { transform: translateX(5px); }

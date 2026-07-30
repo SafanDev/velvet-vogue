@@ -1,0 +1,135 @@
+/* ==========================================================================
+   VELVET VOGUE - SUPPORT DESK CSS (Minimalist Edition)
+   ========================================================================== */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #000;
+}
+
+.text-silver { color: #cccccc !important; }
+.text-light-silver { color: #e0e0e0 !important; }
+.text-gold { color: var(--color-gold-metallic) !important; }
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.massive-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; color: #fff;}
+.simple-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #888; display: block; }
+.badge-count { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+
+.border-bottom-dark { border-bottom: 1px solid rgba(255,255,255,0.1) !important; }
+.border-top-dark { border-top: 1px solid rgba(255,255,255,0.1) !important; }
+.tracking-widest { letter-spacing: 2px; }
+
+/* Status Dot Colors (Inbox Only) */
+.status-red { background-color: #ff7675; box-shadow: 0 0 8px #ff7675; }
+.status-gold { background-color: var(--color-gold-metallic); box-shadow: 0 0 8px var(--color-gold-metallic); }
+.status-green { background-color: #2ecc71; box-shadow: 0 0 8px #2ecc71; }
+.status-grey { background-color: #555; }
+
+/* ==========================================
+   4-COLUMN METRICS (Colorless & Minimalist)
+   ========================================== */
+.metric-card { 
+    background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; 
+    padding: 25px 20px; display: flex; align-items: center; gap: 20px; position: relative; 
+    overflow: hidden; will-change: transform; transform-style: preserve-3d; cursor: default;
+    transition: border-color 0.3s ease;
+}
+.metric-card:hover { border-color: rgba(255,255,255,0.25); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+
+.metric-icon { font-size: 1.8rem; color: #888; transform: translateZ(30px); }
+.metric-info { position: relative; z-index: 2; display: flex; flex-direction: column; transform: translateZ(20px); }
+.metric-label { font-size: 0.7rem; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 3px; font-weight: 600; }
+.metric-value { font-family: var(--font-heading); font-size: 1.6rem; line-height: 1; font-weight: 700; }
+
+
+/* Search Input */
+.tactical-search { position: relative; width: 300px; }
+.search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #666; font-size: 0.8rem; pointer-events: none; transition: 0.3s; }
+.search-input { width: 100%; height: 42px; background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0 15px 0 35px; border-radius: 4px; font-family: var(--font-body); font-size: 0.85rem; transition: 0.3s; outline: none; }
+.search-input::placeholder { color: #666; }
+.search-input:focus { border-color: var(--color-gold-metallic); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
+.search-input:focus + .search-icon { color: var(--color-gold-metallic); }
+
+/* ==========================================
+   SPLIT PANE MATRIX
+   ========================================== */
+.matrix-pane {
+    background: #040404;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.pane-header {
+    padding: 25px;
+    background: #0a0a0a;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.pane-title {
+    font-family: var(--font-heading); font-size: 0.85rem; color: #fff;
+    text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
+}
+
+/* Custom Scrollbars */
+.custom-scrollbar { overflow-y: auto; overflow-x: hidden; }
+.custom-scrollbar::-webkit-scrollbar { width: 6px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; border-left: 1px solid rgba(255,255,255,0.05); }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.3); }
+
+/* LEFT: Inbox List */
+.inbox-item {
+    padding: 22px 25px; border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; transition: all 0.3s ease; background: transparent;
+}
+.inbox-item:hover { background: rgba(255,255,255,0.03); }
+.inbox-item.active-ticket { background: rgba(212,175,55,0.05); border-left: 3px solid var(--color-gold-metallic); }
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.truncate-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* RIGHT: Reading Console */
+.ticket-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.chat-bubble { padding: 25px; border-radius: 4px; max-width: 85%; }
+.client-bubble { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid #888; }
+.admin-bubble { background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.2); margin-left: auto; }
+.bubble-header { margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+
+/* Form Elements */
+.form-floating-custom { position: relative; width: 100%; }
+.luxury-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: var(--font-body); font-size: 0.95rem; padding: 15px 0 10px 0; transition: all 0.3s ease; outline: none; border-radius: 0; }
+.luxury-input:focus { border-bottom-color: var(--color-gold-metallic); }
+.form-floating-custom label { position: absolute; top: 15px; left: 0; color: #666; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 1px; pointer-events: none; transition: all 0.3s ease; text-transform: uppercase; }
+.luxury-input:focus ~ label, .luxury-input:not(:placeholder-shown) ~ label { top: -10px; font-size: 0.65rem; color: var(--color-gold-metallic); font-weight: 600; }
+
+/* Elegant Dropdown */
+.elegant-select-wrapper { position: relative; display: inline-block; background: #000; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; transition: 0.3s;}
+.elegant-select-wrapper:hover { border-color: rgba(255,255,255,0.4); }
+.elegant-select { appearance: none; -webkit-appearance: none; width: 100%; height: 42px; background: transparent; border: none; padding: 0 15px; font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; outline: none; }
+.select-arrow { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); font-size: 0.7rem; pointer-events: none; color: #888;}
+.elegant-select option { background: #111; color: #fff; font-weight: 500; }
+
+/* Core Submit Button */
+.btn-core-solid {
+    position: relative; background: transparent; color: var(--color-gold-metallic); border: 1px solid var(--color-gold-metallic);
+    padding: 0 30px; height: 42px; font-family: var(--font-body); font-weight: 800; font-size: 0.75rem;
+    letter-spacing: 2px; text-transform: uppercase; border-radius: 4px; cursor: pointer; overflow: hidden;
+    transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s cubic-bezier(0.16, 1, 0.3, 1); z-index: 1;
+    display: inline-flex; align-items: center;
+}
+.btn-core-solid::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: var(--color-gold-metallic); z-index: -1; transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.btn-core-solid:hover { color: #000; padding-left: 35px; padding-right: 25px;}
+.btn-core-solid:hover::before { left: 0; }

@@ -1,0 +1,201 @@
+/* ==========================================================================
+   VELVET VOGUE - MILLION DOLLAR INVOICE CSS
+   ========================================================================== */
+
+:root {
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Montserrat", sans-serif;
+    --color-gold-metallic: #d4af37;
+    --color-bg-matte: #030303;
+}
+
+.invoice-wrapper { background-color: var(--color-bg-matte); min-height: 100vh; font-family: var(--font-body); padding-bottom: 100px; color: #fff; }
+
+.tracking-luxury { font-family: var(--font-body); letter-spacing: 4px; text-transform: uppercase; font-weight: 600; }
+.font-monospace { font-family: "Courier New", Courier, monospace; letter-spacing: 1px; }
+
+.text-silver { color: #aaaaaa !important; }
+.gold-text { color: var(--color-gold-metallic) !important; }
+
+.border-dark { border: 1px solid rgba(255,255,255,0.05); }
+.border-bottom-dark { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.border-top-dark { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.border-bottom-thick { border-bottom: 2px solid var(--color-gold-metallic); }
+
+/* ==========================================================================
+   SCREEN PRESENTATION (THE DIGITAL ARTIFACT)
+   ========================================================================== */
+.invoice-document {
+    background: #080808;
+    padding: 70px 80px;
+    max-width: 950px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 0 50px rgba(0,0,0,0.8);
+    border-radius: 2px;
+}
+
+/* Tactical Corners */
+.inv-corner { position: absolute; width: 30px; height: 30px; border-color: rgba(212, 175, 55, 0.5); border-style: solid; z-index: 10; pointer-events: none; }
+.tl { top: 15px; left: 15px; border-width: 2px 0 0 2px; }
+.tr { top: 15px; right: 15px; border-width: 2px 2px 0 0; }
+.bl { bottom: 15px; left: 15px; border-width: 0 0 2px 2px; }
+.br { bottom: 15px; right: 15px; border-width: 0 2px 2px 0; }
+
+/* Watermark */
+.inv-watermark {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-30deg);
+    font-family: var(--font-heading); font-size: 9rem; color: rgba(255,255,255,0.015);
+    white-space: nowrap; pointer-events: none; z-index: 1; user-select: none; font-weight: 900;
+}
+
+/* Header */
+.inv-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--color-gold-metallic); padding-bottom: 30px; margin-bottom: 40px; position: relative; z-index: 2; }
+.brand-logo { font-family: var(--font-heading); font-size: 2.2rem; color: #fff; letter-spacing: 8px; margin: 0 0 5px 0; text-transform: uppercase; }
+
+/* Intel Grid */
+.details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.05); position: relative; z-index: 2;}
+.details-cell { background: #0a0a0c; padding: 30px; }
+.details-label { font-size: 0.65rem; color: #888; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; }
+.details-value { font-size: 1rem; letter-spacing: 1px; color: #fff; font-family: var(--font-body); }
+.details-desc { font-size: 0.8rem; color: #aaa; }
+
+/* Table */
+.inv-table-wrapper { position: relative; z-index: 2; }
+.inv-table { width: 100%; border-collapse: collapse; }
+.inv-table th { background: transparent; padding: 15px 10px; font-size: 0.65rem; color: #888; letter-spacing: 4px; border-bottom: 1px solid rgba(255,255,255,0.1); text-transform: uppercase;}
+.inv-table td { padding: 30px 10px; border-bottom: 1px solid rgba(255,255,255,0.03); vertical-align: middle; }
+.inv-item-name { font-family: var(--font-heading); letter-spacing: 2px; font-size: 1.1rem; color: #fff;}
+.inv-item-meta { font-size: 0.75rem; letter-spacing: 1px; }
+
+/* Math Breakdown */
+.inv-totals-wrapper { display: flex; justify-content: flex-end; position: relative; z-index: 2; }
+.math-breakdown { width: 100%; max-width: 400px; background: rgba(255,255,255,0.02); padding: 30px; border: 1px solid rgba(255,255,255,0.05); border-radius: 2px;}
+.math-line { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.sl-label { font-size: 0.75rem; letter-spacing: 3px; font-weight: 600; text-transform: uppercase; color: #888; }
+.sl-value { font-size: 0.95rem; color: #e0e0e0; }
+
+/* Footer / Barcode */
+.inv-footer { display: flex; justify-content: space-between; align-items: center; }
+.dynamic-barcode { display: flex; height: 35px; align-items: center; opacity: 0.6; }
+.bar-line { background: #fff; height: 100%; margin-right: 2px; border-radius: 1px; }
+
+/* Action Buttons */
+.btn-outline-gold { background: transparent; border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); font-family: var(--font-body); font-weight: 700; letter-spacing: 4px; cursor: pointer; transition: 0.3s; text-transform: uppercase; border-radius: 2px; font-size: 0.75rem;}
+.btn-outline-gold:hover { background: var(--color-gold-metallic); color: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.2); }
+.btn-text-silver { background: transparent; border: none; color: #aaaaaa; font-weight: 600; text-decoration: none; transition: 0.3s; font-size: 0.75rem; letter-spacing: 3px;}
+.btn-text-silver:hover { color: #fff; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .invoice-document { padding: 40px 20px; }
+    .inv-header { flex-direction: column; align-items: flex-start; }
+    .details-grid { grid-template-columns: 1fr; }
+    .inv-footer { flex-direction: column; align-items: flex-start; gap: 20px;}
+    .math-breakdown { max-width: 100%; }
+}
+
+
+/* ==========================================================================
+   FLAWLESS 1-PAGE PRINT PROTOCOL (COMPLETELY REBUILT)
+   ========================================================================== */
+@media print {
+    /* 1. Page Rules - Standard A4, 1cm margin allows max space */
+    @page { size: A4 portrait; margin: 10mm; }
+
+    /* 2. Strip all web layouts, backgrounds, and overflows */
+    html, body { 
+        background: #fff !important; color: #000 !important; 
+        margin: 0 !important; padding: 0 !important; 
+        min-height: auto !important; height: auto !important; 
+        overflow: visible !important; 
+    }
+    
+    /* Hide all UI clutter */
+    header, footer, .no-print, .cinematic-grain, .transit-grid-bg, .action-bar { 
+        display: none !important; 
+    }
+    
+    .invoice-wrapper { 
+        background: #fff !important; padding: 0 !important; margin: 0 !important; 
+        display: block !important;
+    }
+
+    /* 3. The main document becomes a simple, flat container */
+    .invoice-document {
+        position: relative !important; 
+        width: 100% !important; max-width: 100% !important; 
+        margin: 0 !important; padding: 0 !important;
+        background: #fff !important; box-shadow: none !important; 
+        border: none !important; color: #000 !important;
+        page-break-inside: avoid !important;
+    }
+
+    /* Force Colors to Black/White */
+    * { color: #000 !important; text-shadow: none !important; background: transparent !important; }
+
+    /* 4. Header Optimization */
+    .inv-header { 
+        display: flex !important; flex-direction: row !important; 
+        justify-content: space-between !important; align-items: flex-end !important;
+        border-bottom: 2px solid #000 !important; 
+        padding-bottom: 10px !important; margin-bottom: 15px !important; 
+    }
+    .brand-logo { font-size: 20pt !important; margin-bottom: 0 !important; letter-spacing: 2px !important; }
+    .tracking-luxury { letter-spacing: 1px !important; }
+    .inv-id { font-size: 12pt !important; }
+
+    /* 5. Grid Optimization: Force 4 columns horizontally to save massive vertical space */
+    .details-grid { 
+        display: grid !important; 
+        grid-template-columns: repeat(4, 1fr) !important; 
+        gap: 0 !important; 
+        border: 1px solid #000 !important; 
+        margin-bottom: 15px !important; 
+    }
+    .details-cell { padding: 8px !important; border-right: 1px solid #ccc !important; border-bottom: none !important; }
+    .details-cell:last-child { border-right: none !important; }
+    .details-label { font-size: 7pt !important; color: #555 !important; margin-bottom: 2px !important;}
+    .details-value { font-size: 9pt !important; font-weight: bold !important; margin-top: 2px !important; }
+    .details-desc { font-size: 8pt !important; color: #333 !important; }
+
+    /* 6. Table Shrinkage */
+    .inv-table-wrapper { margin-bottom: 15px !important; }
+    .inv-table th { border-bottom: 2px solid #000 !important; padding: 4px !important; font-size: 8pt !important; color: #000 !important;}
+    .inv-table td { border-bottom: 1px solid #ccc !important; padding: 8px 4px !important; font-size: 9pt !important; color: #000 !important;}
+    .inv-item-name { font-size: 10pt !important; font-weight: bold !important; }
+    .inv-item-meta { font-size: 7pt !important; color: #555 !important; margin-top: 2px !important;}
+
+    /* 7. Math Totals Layout */
+    .inv-totals-wrapper { 
+        margin-bottom: 10px !important; 
+        justify-content: flex-end !important; 
+        display: flex !important; 
+    }
+    .math-breakdown { 
+        padding: 10px !important; border: 1px solid #000 !important; 
+        max-width: 250px !important; width: 100% !important;
+    }
+    .math-line { margin-bottom: 4px !important; display: flex !important; justify-content: space-between !important;}
+    .sl-label { font-size: 7pt !important; color: #000 !important; }
+    .sl-value { font-size: 9pt !important; color: #000 !important; }
+    .border-bottom-dark { border-bottom: 1px solid #ccc !important; padding-bottom: 4px !important; margin-bottom: 4px !important;}
+    .math-line.pt-2 { border-top: 1px solid #000 !important; padding-top: 5px !important; margin-top: 5px !important; }
+    .math-line .tracking-luxury { font-size: 8pt !important; }
+    .inv-total-paid { font-size: 12pt !important; color: #000 !important; }
+
+    /* 8. Footer (Barcode & Hash) */
+    .inv-footer { 
+        padding-top: 10px !important; border-top: 1px solid #000 !important; 
+        margin-top: 10px !important; display: flex !important; 
+        justify-content: space-between !important; align-items: center !important;
+        page-break-inside: avoid !important;
+    }
+    .dynamic-barcode { height: 20px !important; }
+    .bar-line { background: #000 !important; opacity: 1 !important; }
+    #cryptoHash { font-size: 6pt !important; color: #555 !important; }
+    .text-silver { color: #555 !important; }
+
+    /* Kill aesthetics completely */
+    .inv-corner, .inv-watermark { display: none !important; }
+}

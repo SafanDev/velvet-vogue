@@ -1,0 +1,129 @@
+/* ==========================================================================
+   VELVET VOGUE - WISHLIST CSS
+   ========================================================================== */
+
+.gallery-wrapper { background-color: var(--color-bg-matte, #030303); min-height: 85vh; font-family: var(--font-body); color: #fff; padding-bottom: 120px; }
+
+/* Micro Typography */
+.gallery-title { font-family: var(--font-heading); font-size: 2.5rem; color: #fff; letter-spacing: 8px; margin: 0; text-transform: uppercase; }
+@media(min-width: 768px) { .gallery-title { font-size: 3.5rem; } }
+.tracking-luxury { font-family: var(--font-body); letter-spacing: 4px; text-transform: uppercase; font-weight: 600;}
+.telemetry-counter { font-size: 0.75rem; color: #aaaaaa; letter-spacing: 3px; font-weight: 600; border-top: 1px solid rgba(255,255,255,0.1); display: inline-block; padding-top: 15px; }
+
+.text-silver { color: #e0e0e0 !important; }
+.gold-text { color: var(--color-gold-metallic, #d4af37) !important; }
+
+/* Empty State */
+.empty-gallery-state { padding: 15vh 0; }
+.empty-icon-wrap { font-size: 4rem; color: rgba(255,255,255,0.1); display: inline-block; padding: 40px; border-radius: 50%; border: 1px dashed rgba(255,255,255,0.1); }
+.btn-outline-gold { background: transparent; border: 1px solid var(--color-gold-metallic, #d4af37); color: var(--color-gold-metallic, #d4af37); font-family: var(--font-body); font-weight: 700; font-size: 0.8rem; letter-spacing: 4px; padding: 18px 40px; cursor: pointer; transition: 0.3s; text-transform: uppercase; display: inline-block; text-decoration: none; border-radius: 2px;}
+.btn-outline-gold:hover { background: var(--color-gold-metallic, #d4af37); color: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.2); text-decoration: none;}
+
+/* ==========================================
+   HEADER BADGES (Dynamically Injected globally)
+   ========================================== */
+.vv-header-wish-badge, .vv-header-cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--color-gold-metallic, #d4af37);
+    color: #000;
+    font-family: var(--font-body);
+    font-size: 0.6rem;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid #080808;
+    z-index: 10;
+}
+.vv-header-wish-badge { background: #fff; color: #000; }
+
+/* ==========================================
+   THE PRODUCT CARDS
+   ========================================== */
+.gallery-grid { transition: 0.5s ease; }
+
+.gallery-grid:has(.g-card:hover) .gallery-item-wrapper:not(:hover) {
+    opacity: 0.3;
+    filter: blur(5px) grayscale(60%);
+    transform: scale(0.97);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item-wrapper { transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.g-card { position: relative; background: transparent; border: none; cursor: pointer; }
+.g-card:hover { transform: translateY(-12px); z-index: 10; }
+
+/* Image Container */
+.g-img-wrap { 
+    position: relative; 
+    aspect-ratio: 3/4; 
+    background: #050505; 
+    overflow: hidden; 
+    border: 1px solid rgba(255,255,255,0.05); 
+    transition: border-color 0.6s ease, box-shadow 0.6s ease;
+}
+.g-card:hover .g-img-wrap {
+    border-color: rgba(212,175,55,0.4);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 30px rgba(212,175,55,0.15);
+}
+
+.g-artifact-img { 
+    width: 100%; height: 100%; object-fit: cover; 
+    filter: brightness(0.8); 
+    transform: scale(1.1);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), filter 1s ease; 
+}
+.g-card:hover .g-artifact-img { filter: brightness(1.05); transform: scale(1.15); }
+
+/* Fabric Overlay Reveal */
+.fabric-overlay { position: absolute; left: 0; width: 100%; height: 50.5%; background: #000; z-index: 2; pointer-events: none; }
+.fabric-top { top: 0; transform-origin: top; }
+.fabric-bottom { bottom: 0; transform-origin: bottom; }
+
+
+/* Hover Action Overlay */
+.g-hover-actions { 
+    position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%); 
+    display: flex; align-items: flex-end; padding-bottom: 30px; 
+    opacity: 0; transform: translateY(20px); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; 
+    z-index: 3;
+}
+.g-card:hover .g-hover-actions { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+/* Remove Button */
+.btn-remove-garment { 
+    position: absolute; top: 15px; right: 15px; width: 35px; height: 35px; 
+    background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.2); color: #fff; 
+    display: flex; align-items: center; justify-content: center; z-index: 5; 
+    cursor: pointer; transition: all 0.3s ease; backdrop-filter: blur(5px); opacity: 0; 
+}
+.g-card:hover .btn-remove-garment { opacity: 1; }
+.btn-remove-garment:hover { background: #ff4d4d; border-color: #ff4d4d; transform: rotate(90deg) scale(1.1); }
+
+/* Typography */
+.g-brand { font-family: var(--font-heading); font-size: 0.65rem; color: #888; letter-spacing: 5px; text-transform: uppercase; transition: 0.3s; }
+.g-name { font-family: var(--font-heading); font-size: 1.3rem; letter-spacing: 2px; text-transform: uppercase; line-height: 1.2; }
+.g-name a { color: #fff; text-decoration: none; transition: 0.3s; }
+.g-card:hover .g-name a { color: var(--color-gold-metallic, #d4af37); }
+.g-category { font-family: var(--font-body); font-size: 0.75rem; color: #aaaaaa; letter-spacing: 2px; text-transform: uppercase; }
+.g-price { font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; letter-spacing: 1px; }
+
+/* URBAN SPRITE MASK BUTTON */
+.mask-btn-container { position: relative; height: 50px; overflow: hidden; border: 1px solid var(--color-gold-metallic, #d4af37); border-radius: 0; background: #000; }
+.mask-btn-container button { position: absolute; top:0; left:0; width: 101%; height: 100%; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 4px; font-weight: 700; border: none; background: var(--color-gold-metallic, #d4af37); color: #000; cursor: pointer; -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png"); mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png"); -webkit-mask-size: 3000% 100%; mask-size: 3000% 100%; animation: maskAni2 0.7s steps(29) forwards; z-index: 2; }
+.mask-btn-container button:hover { animation: maskAni 0.7s steps(29) forwards; }
+.mask-btn-container .mas { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--color-gold-metallic, #d4af37); font-family: var(--font-body); font-size: 0.8rem; font-weight: 700; letter-spacing: 4px; z-index: 1; transition: opacity 0.3s; }
+
+@keyframes maskAni { from { -webkit-mask-position: 0 0; mask-position: 0 0; } to { -webkit-mask-position: 100% 0; mask-position: 100% 0; } }
+@keyframes maskAni2 { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; } to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
+
+@media (max-width: 991px) {
+    .gallery-grid:has(.g-card:hover) .gallery-item-wrapper:not(:hover) { opacity: 1; filter: none; transform: none; }
+    .btn-remove-garment { opacity: 1; }
+    .g-hover-actions { opacity: 1; transform: translateY(0); pointer-events: auto; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%); }
+}

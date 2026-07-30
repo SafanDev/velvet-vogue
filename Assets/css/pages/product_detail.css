@@ -1,0 +1,122 @@
+/* ==========================================================================
+   VELVET VOGUE - PRODUCT DETAIL (PERFECTLY PROPORTIONED)
+   ========================================================================== */
+
+.pd-wrapper { background-color: var(--color-bg-matte, #030303); min-height: 100vh; font-family: var(--font-body); color: #ccc; overflow-x: hidden; }
+
+/* 1. Top Section - Hero Split */
+.pd-hero { display: flex; width: 100%; height: calc(100vh - 95px); min-height: 650px; align-items: center; }
+
+/* Left Column - Interactive Spotlight */
+.pd-image-col { width: 50%; height: 100%; display: flex; align-items: center; justify-content: center; background: #050505; border-right: 1px solid rgba(255,255,255,0.05); position: relative; padding: 40px; }
+
+/* Dynamic Image Container */
+.pd-main-img-container { height: 72vh; max-height: 700px; width: 100%; max-width: 500px; aspect-ratio: 3/4; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); cursor: crosshair; background: #080808; border-radius: 4px; box-shadow: 0 40px 80px rgba(0,0,0,0.8); }
+.pd-main-img { width: 100%; height: 100%; object-fit: cover; will-change: transform; transition: none; z-index: 1; position: relative; }
+
+/* Crossfade overlay image */
+.pd-crossfade-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; opacity: 0; }
+
+.img-loader { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--color-gold-metallic, #d4af37); opacity: 0; pointer-events: none; transition: 0.3s; z-index: 3; backdrop-filter: blur(5px); }
+.img-loader.active { opacity: 1; pointer-events: auto; }
+
+/* Right Column - Locked Intel Panel */
+.pd-info-col { width: 50%; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 5vw; background: var(--color-bg-matte, #030303); overflow-y: auto; scrollbar-width: none; }
+.pd-info-col::-webkit-scrollbar { display: none; }
+.pd-info-content { max-width: 520px; width: 100%; margin: 0 auto; padding: 40px 0; }
+
+/* Text & Typography */
+.vv-breadcrumbs { display: flex; align-items: center; font-family: var(--font-body); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; }
+.vv-breadcrumbs a { color: #666; text-decoration: none; transition: 0.3s; }
+.vv-breadcrumbs a:hover { color: var(--color-gold-metallic, #d4af37); }
+.vv-breadcrumbs .sep { margin: 0 10px; color: #444; }
+.vv-breadcrumbs .current { color: #fff; }
+
+.pd-brand { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 5px; color: var(--color-gold-metallic, #d4af37); text-transform: uppercase; cursor: default; }
+.pd-title { font-family: var(--font-heading); font-size: 2.8rem; color: #fff; line-height: 1.1; text-transform: uppercase; letter-spacing: 2px; margin: 0; }
+
+.rating-link { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 1px; text-decoration: underline; text-decoration-color: #444; text-underline-offset: 4px; transition: 0.3s; cursor: pointer; }
+.rating-link:hover { color: var(--color-gold-metallic, #d4af37) !important; text-decoration-color: var(--color-gold-metallic, #d4af37); }
+
+.pd-price { font-family: var(--font-body); font-size: 1.6rem; font-weight: 600; letter-spacing: 2px; color: var(--color-gold-metallic, #d4af37); }
+.pd-price-old { font-family: var(--font-body); font-size: 1.1rem; color: #555; margin-right: 15px; }
+
+/* Options Area */
+.border-top-dark { border-top: 1px solid rgba(255, 255, 255, 0.05); }
+.border-bottom-dark { border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.options-label { font-family: var(--font-body); font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 3px; display: block; margin-bottom: 10px; }
+.text-silver { color: #aaaaaa !important; }
+
+/* THE HALO EFFECT FOR SWATCHES */
+.color-swatch { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #222; position: relative; padding: 0; cursor: pointer; transition: 0.3s; z-index: 1; flex-shrink: 0; }
+.color-swatch.active { border-color: var(--color-gold-metallic, #d4af37); transform: scale(1.15); box-shadow: 0 0 15px rgba(212,175,55,0.4); }
+.color-swatch.active::after { content: ''; position: absolute; top: -7px; left: -7px; right: -7px; bottom: -7px; border: 1px solid rgba(212,175,55,0.5); border-radius: 50%; animation: haloRotate 4s linear infinite; pointer-events: none; z-index: -1; }
+@keyframes haloRotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.modal-horizontal-sizes { display: flex; flex-direction: row; gap: 10px; align-items: center; flex-wrap: wrap; }
+.size-btn-horiz { font-family: var(--font-body); background: transparent; border: 1px solid #333; color: #fff; width: 55px; height: 50px; font-size: 0.85rem; border-radius: 0; cursor: pointer; transition: 0.3s; flex-shrink: 0; }
+.size-btn-horiz.active { border-color: var(--color-gold-metallic, #d4af37); background: rgba(212, 175, 55, 0.05); font-weight: 600; color: var(--color-gold-metallic, #d4af37); }
+
+.qty-selector { display: flex; align-items: center; border: 1px solid #333; height: 50px; width: fit-content; }
+.qty-btn { background: transparent; border: none; color: #888; width: 50px; height: 100%; font-size: 0.8rem; cursor: pointer; }
+#pdQtyInput { font-family: var(--font-body); background: transparent; border: none; color: #fff; width: 40px; text-align: center; font-weight: 700; font-size: 1rem; outline: none; }
+
+/* URBAN SPRITE MASK BUTTON */
+.mask-btn-container { position: relative; height: 60px; overflow: hidden; border: 1px solid var(--color-gold-metallic, #d4af37); border-radius: 0; background: #000; }
+.mask-btn-container button { position: absolute; top:0; left:0; width: 101%; height: 100%; font-family: var(--font-body); font-size: 0.9rem; letter-spacing: 4px; font-weight: 700; border: none; background: var(--color-gold-metallic, #d4af37); color: #000; cursor: pointer; -webkit-mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png"); mask: url("https://raw.githubusercontent.com/robin-dela/css-mask-animation/master/img/urban-sprite.png"); -webkit-mask-size: 3000% 100%; mask-size: 3000% 100%; animation: maskAni2 0.7s steps(29) forwards; z-index: 2; }
+.mask-btn-container button:hover { animation: maskAni 0.7s steps(29) forwards; }
+.mask-btn-container .mas { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: var(--color-gold-metallic, #d4af37); font-family: var(--font-body); font-size: 0.9rem; font-weight: 700; letter-spacing: 4px; z-index: 1; transition: opacity 0.3s; }
+
+@keyframes maskAni { from { -webkit-mask-position: 0 0; mask-position: 0 0; } to { -webkit-mask-position: 100% 0; mask-position: 100% 0; } }
+@keyframes maskAni2 { from { -webkit-mask-position: 100% 0; mask-position: 100% 0; } to { -webkit-mask-position: 0 0; mask-position: 0 0; } }
+
+/* Wishlist Icon Button */
+.pd-wishlist-btn { width: 60px; height: 60px; background: transparent; border: 1px solid #444; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; cursor: pointer; transition: 0.3s; border-radius: 0; flex-shrink: 0;}
+.pd-wishlist-btn.active { color: var(--color-gold-metallic, #d4af37); border-color: var(--color-gold-metallic, #d4af37); }
+.pd-wishlist-btn:hover { border-color: var(--color-gold-metallic, #d4af37); color: var(--color-gold-metallic, #d4af37); }
+.pd-wishlist-btn:hover .icon-heart { animation: heartPulse 1.2s infinite; }
+@keyframes heartPulse { 0% { transform: scale(1); } 15% { transform: scale(1.2); } 30% { transform: scale(1); } 45% { transform: scale(1.2); } 60% { transform: scale(1); } }
+
+/* 2. Secondary Section */
+.pd-secondary { background: #080808; position: relative; z-index: 5; }
+
+/* Feature Cubes */
+.pd-feature-cube { background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.03); padding: 40px 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; border-radius: 4px; transition: all 0.4s ease; cursor: pointer; }
+.feature-icon { font-size: 2.2rem; color: #444; margin-bottom: 20px; display: inline-block; }
+.pd-feature-text { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 4px; color: #888; text-transform: uppercase; transition: color 0.3s; }
+
+/* Enhanced Reviews System */
+.pd-review-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 35px; border-radius: 4px; border-left: 2px solid transparent; transition: 0.4s ease; }
+.pd-review-card:hover { border-left: 2px solid var(--color-gold-metallic, #d4af37); background: rgba(212,175,55,0.03); }
+.rev-author { font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 3px; color: #fff; text-transform: uppercase; font-weight: 600; }
+.rev-title { font-family: var(--font-heading); font-size: 1.1rem; color: #fff; margin: 10px 0 5px; text-transform: uppercase; }
+.rev-text { font-family: var(--font-body); font-size: 0.85rem; color: #888; line-height: 1.6; margin: 0; }
+.quote-watermark { position: absolute; top: -10px; right: 20px; font-size: 6rem; color: rgba(212,175,55,0.05); z-index: 0; transition: 0.4s; }
+.pd-review-card:hover .quote-watermark { color: rgba(212,175,55,0.1); transform: scale(1.1); }
+
+/* Sleek Logistics Grid */
+.pd-logistics-grid { display: flex; flex-direction: column; gap: 15px; }
+.logistics-item { display: flex; align-items: flex-start; padding: 30px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; transition: 0.3s; cursor: pointer; }
+.log-icon { font-size: 1.8rem; color: #555; margin-top: 3px; display: inline-block; }
+.logistics-info h6 { font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 3px; color: #fff; margin-bottom: 8px; text-transform: uppercase; }
+.logistics-info p { font-family: var(--font-body); font-size: 0.85rem; color: #888; margin: 0; line-height: 1.6; }
+
+/* ANAMORPHIC SINGULARITY LANDING EFFECTS */
+.cart-singularity-flare { position: fixed; height: 2px; background: var(--color-gold-metallic, #d4af37); box-shadow: 0 0 10px var(--color-gold-metallic, #d4af37), 0 0 20px var(--color-gold-metallic, #d4af37); transform: translate(-50%, -50%); z-index: 999999; pointer-events: none; border-radius: 50%; }
+.cart-singularity-glow { position: fixed; width: 100px; height: 100px; background: radial-gradient(circle, rgba(212,175,55,0.6) 0%, transparent 70%); transform: translate(-50%, -50%); z-index: 999998; pointer-events: none; mix-blend-mode: screen; }
+
+/* FULLY RESPONSIVE BREAKPOINTS */
+@media (max-width: 991px) {
+    .pd-hero { flex-direction: column; height: auto; min-height: auto; }
+    .pd-image-col, .pd-info-col { width: 100%; height: auto; padding: 40px 20px; }
+    .pd-image-col { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-top: 80px; }
+    .pd-title { font-size: 2.2rem; }
+    .pd-main-img-container { max-width: 100%; height: 65vh; }
+    .pd-info-content { padding: 20px 0; }
+}
+
+@media (max-width: 576px) {
+    .pd-actions { align-items: stretch; }
+    .pd-wishlist-btn { width: 100%; margin-top: 10px; }
+    .pd-main-img-container { height: 50vh; }
+}

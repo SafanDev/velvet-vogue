@@ -1,0 +1,354 @@
+/* ==========================================================================
+   VELVET VOGUE - THE $10,000 CINEMATIC 404 (CURSOR FIX)
+   ========================================================================== */
+
+.error-wrapper { background-color: #040404; min-height: 85vh; font-family: var(--font-body); overflow: hidden; perspective: 1000px; }
+.tracking-luxury { font-family: var(--font-body); letter-spacing: 4px; text-transform: uppercase; font-weight: 600; }
+.text-light-muted { color: #888; }
+.gold-text { color: var(--color-gold-metallic) !important; }
+
+.transit-grid-bg {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background-image: linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px; z-index: 1; pointer-events: none;
+    transform: perspective(1000px) rotateX(60deg); animation: gridForward 15s linear infinite;
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+    transition: background-image 1s ease;
+}
+@keyframes gridForward { 0% { background-position: 0 0; } 100% { background-position: 0 60px; } }
+
+/* GOD MODE CSS OVERRIDES */
+body.god-mode .transit-grid-bg { background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px); }
+body.god-mode .laser-grid-bg { background-image: linear-gradient(rgba(0, 255, 255, 0.2) 1px, transparent 1px); }
+body.god-mode .gold-text { color: #0ff !important; text-shadow: 0 0 10px #0ff; }
+body.god-mode .btn-cyber-start::before { background: #0ff; }
+body.god-mode .btn-cyber-start { color: #0ff; border-color: #0ff; }
+
+.override-alert {
+    position: fixed; inset: 0; background: rgba(0,255,255,0.1); z-index: 999999;
+    display: none; flex-direction: column; align-items: center; justify-content: center;
+    backdrop-filter: blur(5px); animation: flashIn 0.2s forwards; pointer-events: none;
+}
+@keyframes flashIn { 0% { opacity: 0; transform: scale(1.1); } 100% { opacity: 1; transform: scale(1); } }
+
+/* CRASH INTRO */
+.crash-intro-screen { position: fixed; inset: 0; background: #020202; z-index: 99999; display: flex; align-items: center; justify-content: center; overflow: hidden; contain: strict; isolation: isolate; opacity: 1; }
+.crash-intro-screen.is-exiting { opacity: 0; pointer-events: none; transition: opacity 0.38s ease; }
+.crash-camera-rig { position: relative; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; animation: impactCameraShake 0.6s 1s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards; will-change: transform; }
+@keyframes impactCameraShake { 0%, 100% { transform: translate3d(0, 0, 0); } 10% { transform: translate3d(-20px, 15px, 0) rotate(-2deg); } 20% { transform: translate3d(25px, -20px, 0) rotate(2deg); } 30% { transform: translate3d(-15px, 25px, 0) rotate(-1deg); } 40% { transform: translate3d(20px, -15px, 0) rotate(1deg); } 50% { transform: translate3d(-10px, 10px, 0); } 60% { transform: translate3d(10px, -10px, 0); } 80% { transform: translate3d(-5px, 5px, 0); } }
+.crash-container { position: relative; width: 100%; height: 200px; }
+
+/* CYBER-RIG */
+.cyber-rig { position: absolute; width: 340px; height: 110px; top: 50%; left: 55%; z-index: 5; display: flex; align-items: flex-end; transform-origin: bottom right; --rig-scale: 1; transform: translate3d(calc(-55vw - 400px), -50%, 0) rotate(0deg) scale(var(--rig-scale)); animation: rigDriveAndCrash 1.4s cubic-bezier(0.6, 0.05, 0.25, 1) forwards; will-change: transform; contain: layout paint style; }
+.rig-headlight-beam { position: absolute; right: -300px; bottom: 15px; width: 300px; height: 40px; background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent); clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 80%); z-index: -1; }
+.rig-trailer { width: 250px; height: 100px; background: #151515; border: 2px solid #333; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border-right: 3px solid var(--color-gold-metallic); box-shadow: inset 0 0 40px rgba(0,0,0,0.9); }
+.trailer-lines { position: absolute; top: 10%; width: 100%; height: 80%; background: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.03) 40px, rgba(255,255,255,0.03) 45px); }
+.rig-trailer span { color: #888; font-size: 0.9rem; letter-spacing: 4px; font-weight: bold; z-index: 2; text-shadow: 0 2px 4px #000; }
+.rig-cab { width: 90px; height: 80px; background: #222; border-radius: 0 20px 5px 0; position: relative; border-bottom: 3px solid #111; border-right: 2px solid #444; }
+.rig-window { position: absolute; top: 10px; right: 5px; width: 45px; height: 30px; background: #050505; border-radius: 0 15px 0 0; border-left: 2px solid #333; border-bottom: 2px solid #333;}
+.rig-grill { position: absolute; bottom: 10px; right: 0; width: 10px; height: 30px; background: repeating-linear-gradient(0deg, #000, #000 2px, #555 2px, #555 4px); }
+.rig-headlight { position: absolute; bottom: 15px; right: 5px; width: 8px; height: 12px; background: #fff; box-shadow: 0 0 20px 5px #fff; border-radius: 2px; }
+.rig-wheel { position: absolute; bottom: -20px; width: 45px; height: 45px; background: #050505; border: 6px solid #111; border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: wheelSpin 1s linear forwards; }
+.wheel-hub { width: 15px; height: 15px; background: #444; border-radius: 50%; border: 2px dashed #aaa; }
+.w1 { left: 20px; } .w2 { left: 80px; } .w3 { left: 140px; } .w4 { right: 25px; border-color: #222;}
+
+@keyframes rigDriveAndCrash {
+    0% { transform: translate3d(calc(-55vw - 400px), -50%, 0) rotate(0deg) scale(var(--rig-scale)); }
+    71% { transform: translate3d(-340px, -50%, 0) rotate(0deg) scale(var(--rig-scale)); }
+    100% { transform: translate3d(-340px, -50%, 0) rotate(-12deg) scale(var(--rig-scale)); }
+}
+@keyframes wheelSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(720deg); } }
+
+/* VAULT DOOR */
+.armored-vault-door { position: absolute; width: 30px; height: 260px; top: 50%; left: 55%; transform: translateY(-50%); z-index: 4; display: flex; flex-direction: column; }
+.door-half { width: 100%; height: 49%; background: linear-gradient(90deg, #111, #333, #111); border-left: 4px solid var(--color-gold-metallic); border-right: 2px solid #555; position: relative; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.9); }
+.hazard-tape { position: absolute; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #000, #000 10px, var(--color-gold-metallic) 10px, var(--color-gold-metallic) 20px); opacity: 0.2; }
+.door-seam { width: 100%; height: 2%; background: #000; box-shadow: 0 0 10px #ff4d4d; }
+.door-top { animation: shatterTop 0.8s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; transform-origin: top right; }
+.door-bottom { animation: shatterBottom 0.8s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; transform-origin: bottom right; }
+.door-seam { animation: flashBang 0.1s 1s forwards; }
+@keyframes shatterTop { 0% { transform: translate(0, 0) rotate(0deg); opacity: 1; } 100% { transform: translate(150px, -150px) rotate(80deg); opacity: 0; } }
+@keyframes shatterBottom { 0% { transform: translate(0, 0) rotate(0deg); opacity: 1; } 100% { transform: translate(120px, 150px) rotate(-70deg); opacity: 0; } }
+
+/* SPARKS & FX */
+.crash-flash { position: absolute; inset: -500px; background: #fff; opacity: 0; pointer-events: none; z-index: 20; animation: flashBang 0.6s 1s ease-out forwards; }
+.crash-smoke { position: absolute; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, #222 0%, rgba(50,50,50,0.8) 40%, transparent 70%); top: 50%; left: 55%; z-index: 6; filter: blur(10px); will-change: transform, opacity; opacity: 0; animation: smokePuff 4s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
+.spark { position: absolute; top: 50%; left: 55%; width: 4px; height: 20px; background: #fff; box-shadow: 0 0 10px var(--color-gold-metallic), 0 0 20px #ff4d4d; border-radius: 10px; z-index: 25; opacity: 0; transform-origin: bottom center; }
+.s1 { animation: sparkShoot 0.5s 1.01s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --r: 20deg;  --d: -300px; }
+.s2 { animation: sparkShoot 0.4s 1.03s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --r: 60deg;  --d: -400px; }
+.s3 { animation: sparkShoot 0.6s 1.0s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;  --r: -30deg; --d: -250px; }
+.s4 { animation: sparkShoot 0.5s 1.02s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --r: -80deg; --d: -350px; }
+.s5 { animation: sparkShoot 0.7s 1.04s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --r: 110deg; --d: -280px; }
+.s6 { animation: sparkShoot 0.4s 1.01s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --r: -140deg; --d: -320px; }
+
+@keyframes flashBang { 0% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes sparkShoot { 0% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--r)) translateY(0) scaleY(1); } 100% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--r)) translateY(var(--d)) scaleY(0.2); } }
+@keyframes smokePuff { 0% { transform: translate(-50%, -50%) scale(0); opacity: 1; } 30% { transform: translate(-50%, -60%) scale(1.5); opacity: 0.9; } 100% { transform: translate(-30%, -150%) scale(2.5); opacity: 0; } }
+
+.spilled-item { position: absolute; font-size: 3rem; top: 50%; left: 55%; opacity: 0; transform: translate(-50%, -50%); z-index: 7; }
+.i-1 { animation: flyOut 2.5s 1.02s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --tX: -250px; --tY: -200px; --r: 360deg; }
+.i-2 { animation: flyOut 2.8s 1.0s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --tX: -350px; --tY: -80px;  --r: 720deg; }
+.i-3 { animation: flyOut 2.2s 1.05s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --tX: -180px; --tY: 150px;  --r: -360deg; }
+.i-4 { animation: flyOut 2.6s 1.01s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --tX: 280px;  --tY: 180px;  --r: -720deg; }
+.i-5 { animation: flyOut 2.9s 1.03s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --tX: 150px;  --tY: -150px; --r: 540deg; }
+@keyframes flyOut { 0% { opacity: 1; transform: translate(-50%, -50%) rotate(0deg); } 100% { opacity: 0; transform: translate(var(--tX), var(--tY)) rotate(var(--r)); } }
+
+/* SHATTERING LOGO */
+.shatter-logo { position: absolute; top: 20%; left: 50%; transform: translateX(-50%); display: flex; font-family: var(--font-heading); font-size: 4.5rem; font-weight: 900; color: #fff; letter-spacing: 5px; z-index: 10; text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+.shatter-logo span { display: inline-block; will-change: transform; opacity: 1; }
+.sl-1 { animation: breakDrop 3.5s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: -100px; --dY: 200px; --dR: -75deg; }
+.sl-2 { animation: breakDrop 3.6s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: -50px;  --dY: 250px; --dR: 45deg; }
+.sl-3 { animation: breakDrop 3.4s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: -20px;  --dY: 300px; --dR: -120deg; }
+.sl-4 { animation: breakDrop 3.7s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: 10px;   --dY: 220px; --dR: 90deg; }
+.sl-5 { animation: breakDrop 3.5s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: 60px;   --dY: 280px; --dR: -30deg; }
+.sl-6 { animation: breakDrop 3.8s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: 120px;  --dY: 180px; --dR: 60deg; }
+.sl-7 { animation: breakDrop 3.4s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: 80px;   --dY: 260px; --dR: -90deg; }
+.sl-9 { animation: breakDrop 3.5s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: 200px;  --dY: 240px; --dR: -45deg; }
+.sl-10{ animation: breakDrop 3.7s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: 240px;  --dY: 190px; --dR: 180deg; }
+.sl-11{ animation: breakDrop 3.3s 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; --dX: 300px;  --dY: 270px; --dR: -60deg; }
+@keyframes breakDrop { 0% { transform: translate(0, 0) rotate(0deg); opacity: 1; } 100% { transform: translate(var(--dX), var(--dY)) rotate(var(--dR)); opacity: 0; } }
+.sl-8 { animation: gravityRoll 4.5s 1s forwards; color: var(--color-gold-metallic); z-index: 25; text-shadow: 0 0 20px rgba(212,175,55,0.8); }
+@keyframes gravityRoll { 0% { transform: translate(0, 0) rotate(0deg); opacity: 1; } 15% { transform: translate(80px, -120px) rotate(180deg); opacity: 1; animation-timing-function: ease-in; } 30% { transform: translate(160px, 150px) rotate(360deg); opacity: 1; animation-timing-function: ease-out; } 45% { transform: translate(210px, 80px) rotate(450deg); opacity: 1; animation-timing-function: ease-in; } 60% { transform: translate(260px, 150px) rotate(540deg); opacity: 1; animation-timing-function: linear; } 85% { transform: translate(320px, 150px) rotate(720deg); opacity: 1; animation-timing-function: ease-in; } 100% { transform: translate(350px, 600px) rotate(850deg); opacity: 0; } }
+
+/* GAME CSS & TEXT */
+.mega-glitch { position: relative; font-size: 8rem; font-family: var(--font-heading); font-weight: 900; color: #fff; letter-spacing: 15px; margin: 0; display: inline-block; line-height: 1; }
+.mega-glitch::before, .mega-glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; }
+.mega-glitch::before { left: 5px; text-shadow: -3px 0 #ff4d4d; clip-path: inset(0 0 0 0); animation: glitch-anim-1 2.5s infinite linear alternate-reverse; }
+.mega-glitch::after { left: -5px; text-shadow: 3px 0 var(--color-gold-metallic); clip-path: inset(0 0 0 0); animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+
+@keyframes glitch-anim-1 { 0% { clip-path: inset(20% 0 80% 0); } 20% { clip-path: inset(60% 0 10% 0); } 40% { clip-path: inset(40% 0 50% 0); } 60% { clip-path: inset(80% 0 5% 0); } 80% { clip-path: inset(10% 0 70% 0); } 100% { clip-path: inset(30% 0 40% 0); } }
+@keyframes glitch-anim-2 { 0% { clip-path: inset(10% 0 60% 0); } 20% { clip-path: inset(30% 0 20% 0); } 40% { clip-path: inset(70% 0 10% 0); } 60% { clip-path: inset(20% 0 50% 0); } 80% { clip-path: inset(50% 0 30% 0); } 100% { clip-path: inset(5% 0 80% 0); } }
+
+.game-zone-wrapper { background: #0a0a0c; border: 1px solid #333; border-radius: 2px; box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+
+/* FIX: Removed cursor: none; so mouse is always visible on overlays! */
+.game-zone { width: 100%; height: 450px; background: #050505; border: 2px solid #222; overflow: hidden; position: relative; transform: translateZ(0); }
+
+.laser-grid-bg { position: absolute; top: -100%; left: 0; width: 100%; height: 200%; background-image: linear-gradient(rgba(212, 175, 55, 0.1) 1px, transparent 1px); background-size: 100% 40px; pointer-events: none; animation: gridScroll 3s linear infinite; z-index: 1; transition: background-image 1s ease; }
+@keyframes gridScroll { 0% { transform: translateY(0); } 100% { transform: translateY(40px); } }
+
+.player-cart { position: absolute; bottom: 10px; left: 0; font-size: 3rem; line-height: 1; z-index: 10; pointer-events: none; will-change: transform; filter: drop-shadow(0 5px 15px rgba(212,175,55,0.4)); }
+.falling-item { position: absolute; top: 0; left: 0; font-size: 2.5rem; line-height: 1; z-index: 5; will-change: transform; pointer-events: none; user-select: none; }
+.falling-key { display: inline-block; filter: drop-shadow(0 0 15px var(--color-gold-metallic)); animation: pulseKey 0.5s infinite alternate; }
+@keyframes pulseKey { 0% { transform: scale(1); } 100% { transform: scale(1.3); } }
+
+.catch-particle { position: absolute; width: 6px; height: 6px; border-radius: 50%; pointer-events: none; z-index: 15; will-change: transform; animation: particlePop 0.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards; }
+@keyframes particlePop { 0% { transform: translate(0, 0) scale(1); opacity: 1; } 100% { transform: translate(var(--tX), var(--tY)) scale(0); opacity: 0; } }
+
+.float-fx { position: absolute; top:0; left:0; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; pointer-events: none; z-index: 20; will-change: transform; animation: floatUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+@keyframes floatUp { 0% { transform: translate3d(var(--startX), var(--startY), 0) scale(1); opacity: 1; } 100% { transform: translate3d(var(--startX), calc(var(--startY) - 60px), 0) scale(1.5); opacity: 0; } }
+
+.shake { animation: violentGameShake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both; }
+@keyframes violentGameShake { 10%, 90% { transform: translate3d(-5px, 0, 0); } 20%, 80% { transform: translate3d(5px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-10px, 0, 0); } 40%, 60% { transform: translate3d(10px, 0, 0); } }
+
+.combo-text { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 900; color: #ff4d4d; letter-spacing: 2px; text-shadow: 0 0 10px rgba(255, 77, 77, 0.8); transform: scale(1); transition: color 0.3s; }
+.combo-pop { animation: popScale 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+@keyframes popScale { 0% { transform: scale(1); } 50% { transform: scale(1.5) rotate(5deg); } 100% { transform: scale(1) rotate(0deg); } }
+
+/* BUTTONS & UI */
+.goofy-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.9); z-index: 50; }
+.btn-cyber-start { position: relative; background: transparent; color: var(--color-gold-metallic); border: 1px solid var(--color-gold-metallic); padding: 15px 40px; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; overflow: hidden; transition: color 0.4s ease, box-shadow 0.4s ease; z-index: 1; }
+.btn-cyber-start::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: var(--color-gold-metallic); z-index: -1; clip-path: polygon(-10% 0, 0 0, -10% 100%, -20% 100%); transition: clip-path 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
+.btn-cyber-start:hover::before { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+.btn-cyber-start:hover { color: #000; box-shadow: 0 0 20px rgba(212,175,55,0.4); }
+
+.btn-solid-gold { background: var(--color-gold-metallic); color: #000; font-family: var(--font-heading); font-size: 1.1rem; font-weight: 900; border: none; cursor: pointer; transition: 0.1s; letter-spacing: 2px; }
+.btn-solid-gold:hover { background: #fff; }
+.btn-outline-gold { background: transparent; border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); font-family: var(--font-body); font-weight: 700; letter-spacing: 4px; cursor: pointer; transition: 0.3s; text-transform: uppercase; border-radius: 2px;}
+.btn-trophy { background: rgba(212,175,55,0.1); border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); width: 40px; height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+.btn-trophy:hover { background: var(--color-gold-metallic); color: #000; box-shadow: 0 0 15px rgba(212,175,55,0.5); transform: scale(1.1); }
+
+/* LEADERBOARD */
+.border-bottom-dark { border-bottom: 1px solid rgba(255,255,255,0.1); }
+.leaderboard-list { margin: 0; padding: 0; }
+.leaderboard-list::-webkit-scrollbar { width: 5px; }
+.leaderboard-list::-webkit-scrollbar-thumb { background: var(--color-gold-metallic); border-radius: 5px; }
+.leaderboard-item { display: flex; justify-content: space-between; align-items: center; padding: 15px 10px; border-bottom: 1px dashed rgba(255,255,255,0.05); color: #ccc; font-size: 0.9rem; letter-spacing: 1px; }
+.leaderboard-item:last-child { border-bottom: none; }
+.leaderboard-item.rank-1 { color: var(--color-gold-metallic); font-weight: bold; font-size: 1.1rem; text-shadow: 0 0 10px rgba(212,175,55,0.5); }
+.leaderboard-item.rank-2 { color: #aaa; font-weight: bold; }
+.leaderboard-item.rank-3 { color: #cd7f32; font-weight: bold; } 
+.god-tag { color: #0ff; text-shadow: 0 0 8px #0ff; margin-right: 5px; font-weight: 900; }
+.lb-rank { width: 40px; text-align: left; opacity: 0.5; }
+.lb-name { flex: 1; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 15px; }
+.lb-score { text-align: right; }
+.arcade-input { background: #000; border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); padding: 12px 15px; font-family: var(--font-monospace, "Courier New", monospace); font-size: 1.2rem; font-weight: bold; text-align: center; outline: none; text-transform: uppercase; letter-spacing: 4px; width: 100%; max-width: 250px; }
+.arcade-input:focus { box-shadow: 0 0 15px rgba(212,175,55,0.5); }
+.arcade-input[readonly] { border-color: #444; color: #888; background: #111; pointer-events: none; }
+
+@media (max-width: 768px) {
+    .shatter-logo { font-size: 2.5rem; }
+    .cyber-rig { --rig-scale: 0.6; }
+    .armored-vault-door { transform: translateY(-50%) scale(0.6); }
+    .mega-glitch { font-size: 5rem; letter-spacing: 5px; }
+    .game-zone { height: 380px; }
+}
+
+/* Keep the arcade isolated from the rest of the page so game frames do not trigger full-page layout. */
+.game-zone {
+    contain: layout paint style;
+    isolation: isolate;
+}
+
+.falling-item,
+.catch-particle,
+.float-fx,
+.player-cart {
+    contain: layout paint style;
+    backface-visibility: hidden;
+}
+
+.vv-low-power .cinematic-grain,
+.vv-low-power .transit-grid-bg,
+.vv-low-power .crash-smoke,
+.vv-low-power .rig-headlight-beam {
+    display: none !important;
+}
+
+.vv-low-power .mega-glitch::before,
+.vv-low-power .mega-glitch::after,
+.vv-low-power .falling-key {
+    animation-duration: 5s !important;
+}
+
+.vv-low-power .goofy-overlay,
+.vv-low-power .override-alert {
+    backdrop-filter: none !important;
+}
+
+/* Interactive depth scene. Only transform and opacity change while the pointer moves. */
+.vv-vr-scene {
+    --vv-vr-x: 0deg;
+    --vv-vr-y: 0deg;
+    --vv-vr-shift-x: 0px;
+    --vv-vr-shift-y: 0px;
+    --vv-vr-glare-x: 50%;
+    --vv-vr-glare-y: 42%;
+    max-width: 900px;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+    transform: perspective(1400px)
+        translate3d(var(--vv-vr-shift-x), var(--vv-vr-shift-y), 0)
+        rotateX(var(--vv-vr-x))
+        rotateY(var(--vv-vr-y));
+    transition: transform 120ms cubic-bezier(0.2, 0.75, 0.2, 1);
+    isolation: isolate;
+}
+
+body.vv-vr-active .vv-vr-scene {
+    will-change: transform;
+}
+
+.vv-vr-scene::before {
+    content: "";
+    position: absolute;
+    inset: -4%;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: 28px;
+    background: radial-gradient(
+        circle at var(--vv-vr-glare-x) var(--vv-vr-glare-y),
+        rgba(255, 235, 163, 0.17) 0,
+        rgba(212, 175, 55, 0.07) 18%,
+        transparent 48%
+    );
+    opacity: 0.75;
+    transform: translateZ(125px);
+    mix-blend-mode: screen;
+    transition: opacity 180ms ease;
+    contain: paint;
+}
+
+.vv-vr-scene::after {
+    content: "";
+    position: absolute;
+    inset: 4% 3% 1%;
+    z-index: -1;
+    pointer-events: none;
+    border: 1px solid rgba(212, 175, 55, 0.12);
+    border-radius: 26px;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.58), inset 0 0 55px rgba(212, 175, 55, 0.025);
+    transform: translateZ(-55px);
+}
+
+.vv-vr-layer {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.vv-vr-copy {
+    transform: translateZ(58px);
+}
+
+.vv-vr-game {
+    transform: translateZ(92px);
+}
+
+.vv-vr-game .game-zone-wrapper {
+    transform: translateZ(18px);
+    transform-style: preserve-3d;
+    box-shadow: 0 28px 65px rgba(0, 0, 0, 0.55), 0 0 42px rgba(212, 175, 55, 0.055);
+}
+
+.vv-vr-game .game-zone {
+    backface-visibility: hidden;
+}
+
+@media (pointer: coarse) {
+    .vv-vr-scene {
+        transform: perspective(1400px) rotateX(-1.25deg) translate3d(0, 0, 0);
+    }
+
+    .vv-vr-scene::before {
+        opacity: 0.4;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .crash-intro-screen {
+        display: none !important;
+    }
+
+    .mega-glitch::before,
+    .mega-glitch::after,
+    .laser-grid-bg,
+    .falling-key,
+    .cinematic-grain,
+    .transit-grid-bg {
+        animation: none !important;
+    }
+
+    #parallaxContainer {
+        transition: none !important;
+        transform: none !important;
+    }
+}
+
+/* Reveal the page only after the crash so hidden animations do not consume paint time. */
+body.vv-404-intro-active .error-wrapper {
+    visibility: hidden;
+}
+
+.gsap-fade-in {
+    opacity: 0;
+}
+
+body.vv-404-ready .gsap-fade-in {
+    animation: vv404Reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+body.vv-404-ready .gsap-fade-in:nth-of-type(2) {
+    animation-delay: 0.08s;
+}
+
+@keyframes vv404Reveal {
+    from { opacity: 0; transform: translate3d(0, 14px, 0); }
+    to { opacity: 1; }
+}
+
+.crash-intro-screen,
+.game-zone {
+    transform: translateZ(0);
+}
+

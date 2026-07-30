@@ -1,0 +1,316 @@
+/* ==========================================================================
+   VELVET VOGUE - PRODUCT REVIEW CSS (MILLION DOLLAR EDITION)
+   ========================================================================== */
+
+:root {
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Montserrat", sans-serif;
+    --color-gold-metallic: #d4af37;
+}
+
+.review-wrapper { background-color: #040404; min-height: 85vh; font-family: var(--font-body); overflow: hidden; }
+.border-top-dark { border-top: 1px solid rgba(255,255,255,0.1); }
+.border-bottom-dark { border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+.text-silver { color: #e0e0e0 !important; }
+.tracking-luxury { font-family: var(--font-body); letter-spacing: 4px; text-transform: uppercase; font-weight: 600;}
+.font-monospace { font-family: "Courier New", Courier, monospace; letter-spacing: 1px; }
+
+/* The Panning Grid Background */
+.transit-grid-bg {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background-image: linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px; z-index: 1; pointer-events: none;
+    transform: perspective(1000px) rotateX(60deg); animation: gridForward 15s linear infinite;
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+}
+@keyframes gridForward { 0% { background-position: 0 0; } 100% { background-position: 0 60px; } }
+
+/* Main Terminal Box */
+.review-terminal {
+    background: rgba(10,10,12,0.8); border: 1px solid rgba(212,175,55,0.2); border-radius: 4px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,0,0,0.5);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative;
+    overflow: hidden;
+}
+
+/* TACTICAL HUD CORNERS */
+.hud-corner { position: absolute; width: 20px; height: 20px; border-color: rgba(212, 175, 55, 0.5); border-style: solid; z-index: 10; pointer-events: none; transition: 0.3s; }
+.top-left { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+.top-right { top: -1px; right: -1px; border-width: 2px 2px 0 0; }
+.bottom-left { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; }
+.bottom-right { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+.review-terminal:hover .hud-corner { width: 30px; height: 30px; border-color: var(--color-gold-metallic); }
+
+/* Panels */
+.review-left { background: rgba(10,10,10,0.4); position: relative; z-index: 5; }
+.review-right { 
+    background: radial-gradient(circle at center, rgba(15,15,15,0.9), rgba(5,5,5,1)); 
+    border-left: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;
+}
+
+.right-panel-grid {
+    position: absolute; inset: 0; opacity: 0.15; z-index: 1; pointer-events: none;
+    background-image: radial-gradient(rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.btn-text-silver { background: transparent; border: none; color: #aaaaaa; font-weight: 600; text-decoration: none; transition: 0.3s; }
+.btn-text-silver:hover { color: #fff; text-decoration: none; }
+
+/* PRODUCT IMAGE MODULE */
+.product-image-wrapper {
+    width: 90px; height: 110px; flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;
+    overflow: hidden; background: #000; position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+.product-image { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.review-terminal:hover .product-image { opacity: 1; transform: scale(1.05); }
+
+.spec-line { font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 6px; }
+
+/* ==========================================
+   THE MILLION DOLLAR HOLOGRAPHIC CORE
+   ========================================== */
+.reaction-core {
+    width: 320px; height: 320px; position: relative; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; transition: all 0.8s cubic-bezier(0.34, 1.5, 0.64, 1);
+    --core-color: #555; 
+    --core-glow: rgba(255,255,255,0.05);
+    --face-float-amount: -5px;
+    --spin-speed: 20s;
+}
+
+/* Mechanical Holo Rings */
+.holo-ring {
+    position: absolute; border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    transition: all 0.6s cubic-bezier(0.34, 1.5, 0.64, 1); pointer-events: none;
+}
+
+/* 1. Outer Orbit Track */
+.outer-ring {
+    width: 100%; height: 100%;
+    border: 1px solid rgba(255,255,255,0.03);
+    border-left: 2px solid var(--core-color);
+    border-right: 2px solid var(--core-color);
+    box-shadow: 0 0 20px var(--core-glow), inset 0 0 15px var(--core-glow);
+    animation: spinHolo var(--spin-speed) linear infinite;
+}
+
+/* 2. Data Segments */
+.data-ring {
+    width: 85%; height: 85%;
+    border: 2px dashed rgba(255,255,255,0.1);
+    border-top: 2px dashed var(--core-color);
+    animation: spinHolo calc(var(--spin-speed) * 1.5) linear infinite reverse;
+}
+
+/* 3. Inner Torque Ring */
+.inner-ring {
+    width: 70%; height: 70%;
+    border: 3px solid transparent;
+    border-bottom: 3px solid var(--core-color);
+    opacity: 0.8;
+    animation: spinHolo calc(var(--spin-speed) * 0.8) linear infinite;
+}
+
+/* 4. Center Energy Pulse Field */
+.pulse-ring {
+    width: 58%; height: 58%;
+    border: 1px solid var(--core-color);
+    box-shadow: 0 0 40px var(--core-glow);
+    animation: corePulse 2s infinite alternate;
+}
+
+@keyframes spinHolo { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes corePulse { 0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.98); } 100% { opacity: 1; transform: translate(-50%, -50%) scale(1.02); } }
+@keyframes coreShake { 0%, 100% { transform: translate(0, 0); } 20% { transform: translate(-2px, 1px); } 40% { transform: translate(2px, -1px); } 60% { transform: translate(-1px, -2px); } 80% { transform: translate(1px, 2px); } }
+
+/* The 3D Glass Dome Center */
+.core-center-dome {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 58%; height: 58%; 
+    background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.15) 0%, rgba(5,5,5,0.8) 80%);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    transition: all 0.6s cubic-bezier(0.34, 1.5, 0.64, 1); 
+    box-shadow: inset 0 0 20px rgba(255,255,255,0.05), inset -10px -10px 20px rgba(0,0,0,0.8), 0 20px 40px rgba(0,0,0,0.9); 
+    z-index: 5; border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+}
+
+/* ==========================================
+   THE ANIMATED FACE (BREATHING & BLINKING)
+   ========================================== */
+.animated-face {
+    position: relative; width: 80px; height: 80px;
+    display: flex; justify-content: center; align-items: center;
+    color: inherit; transition: color 0.6s cubic-bezier(0.34, 1.5, 0.64, 1);
+    animation: faceFloat 4s ease-in-out infinite;
+}
+
+@keyframes faceFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(var(--face-float-amount)); }
+}
+
+/* Eyes */
+.face-eye {
+    position: absolute; width: 12px; height: 12px; background: currentColor;
+    border-radius: 50%; top: 26px; 
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow: 0 0 10px currentColor;
+    animation: faceBlink 6s infinite;
+}
+.face-eye.left { left: 14px; transform-origin: center right; }
+.face-eye.right { right: 14px; transform-origin: center left; }
+
+@keyframes faceBlink {
+    0%, 96%, 98%, 100% { transform: scaleY(1); }
+    97%, 99% { transform: scaleY(0.1); }
+}
+
+/* Mouth */
+.face-mouth {
+    position: absolute; bottom: 20px; width: 34px; height: 10px;
+    border: 4px solid currentColor; border-radius: 50px;
+    background: transparent; box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    box-shadow: 0 0 10px currentColor, inset 0 0 5px currentColor;
+}
+
+/* Blushing Cheeks */
+.face-blush {
+    position: absolute; width: 18px; height: 10px; background: #ff7675;
+    border-radius: 50%; top: 42px; filter: blur(6px); opacity: 0;
+    transition: 0.5s ease;
+}
+.face-blush.left { left: -2px; }
+.face-blush.right { right: -2px; }
+
+/* Euphoria Particles */
+.sparkle {
+    position: absolute; color: var(--color-gold-metallic); font-size: 1.2rem;
+    opacity: 0; transform: scale(0); filter: drop-shadow(0 0 5px var(--color-gold-metallic));
+    pointer-events: none; transition: 0.4s ease;
+}
+.sp-1 { top: -10px; left: -10px; animation: popSparkle 2s infinite 0.1s; }
+.sp-2 { top: 0px; right: -15px; font-size: 0.8rem; animation: popSparkle 2s infinite 0.7s; }
+.sp-3 { bottom: 15px; left: -20px; font-size: 1rem; animation: popSparkle 2s infinite 1.2s; }
+.sp-4 { bottom: -5px; right: -5px; font-size: 0.9rem; animation: popSparkle 2s infinite 1.8s; }
+
+@keyframes popSparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg) translateY(0); }
+    50% { opacity: 1; transform: scale(1) rotate(45deg) translateY(-15px); }
+}
+
+/* --- DYNAMIC EMOTION STATES --- */
+
+/* State 0: Sleeping / Waiting */
+.sensory-core.state-0 { --core-color: #555; --core-glow: rgba(255,255,255,0.02); --face-float-amount: 2px; --spin-speed: 30s;}
+.state-0 .animated-face { color: #666; animation-duration: 6s; }
+.state-0 .face-eye { height: 4px; border-radius: 4px; top: 34px; width: 16px; background: #555; box-shadow: none; animation: none; }
+.state-0 .face-mouth { height: 4px; border-width: 4px 0 0 0; border-radius: 4px; width: 20px; bottom: 25px; box-shadow: none;}
+
+/* State 1: Angry / Aggressive (1 Star) - Crimson Red */
+.sensory-core.state-1 { --core-color: #ff3333; --core-glow: rgba(255,51,51,0.5); animation: coreShake 0.4s infinite; --face-float-amount: 0px; --spin-speed: 2s;}
+.state-1 .animated-face { color: #ff3333; animation: none; } /* Stiff */
+.state-1 .face-eye { width: 18px; height: 6px; border-radius: 4px; top: 30px; animation: none;}
+.state-1 .face-eye.left { transform: rotate(25deg); }
+.state-1 .face-eye.right { transform: rotate(-25deg); }
+.state-1 .face-mouth { height: 18px; border-width: 6px 6px 0 6px; border-radius: 20px 20px 0 0; bottom: 15px; width: 36px;}
+
+/* State 2: Sad / Disappointed (2 Star) - Amber/Orange */
+.sensory-core.state-2 { --core-color: #ff9f43; --core-glow: rgba(255,159,67,0.4); animation: coreShake 1s infinite; --face-float-amount: 4px; --spin-speed: 10s;}
+.state-2 .animated-face { color: #ff9f43; }
+.state-2 .face-eye { width: 12px; height: 12px; top: 28px; animation: faceBlink 8s infinite;}
+.state-2 .face-mouth { height: 14px; border-width: 4px 4px 0 4px; border-radius: 20px 20px 0 0; bottom: 15px; width: 30px; }
+
+/* State 3: Average / Neutral (3 Star) - Warm Yellow */
+.sensory-core.state-3 { --core-color: #feca57; --core-glow: rgba(254,202,87,0.3); --face-float-amount: -2px; --spin-speed: 15s;}
+.state-3 .animated-face { color: #feca57; }
+.state-3 .face-eye { width: 14px; height: 14px; top: 28px; }
+.state-3 .face-mouth { height: 6px; border-width: 6px 0 0 0; border-radius: 4px; bottom: 22px; width: 30px; }
+
+/* State 4: Happy / Pleased (4 Star) - Sci-Fi Cyan/Teal (Premium contrast) */
+.sensory-core.state-4 { --core-color: #00f0ff; --core-glow: rgba(0,240,255,0.4); --face-float-amount: -6px; --spin-speed: 8s;}
+.state-4 .animated-face { color: #00f0ff; animation-duration: 3s; }
+.state-4 .face-eye { width: 14px; height: 14px; top: 24px; }
+.state-4 .face-mouth { height: 18px; border-width: 0 5px 6px 5px; border-radius: 0 0 30px 30px; bottom: 18px; width: 36px; }
+.state-4 .face-blush { opacity: 0.6; box-shadow: 0 0 10px #ff7675;}
+
+/* State 5: Ecstatic / Perfect (5 Star) - Glowing Gold */
+.sensory-core.state-5 { --core-color: var(--color-gold-metallic); --core-glow: rgba(212,175,55,0.8); --face-float-amount: -10px; --spin-speed: 4s;}
+.sensory-core.state-5 .core-center-dome { 
+    background: radial-gradient(circle at 30% 30%, rgba(212,175,55,0.25) 0%, rgba(0,0,0,0.8) 80%); 
+    border-color: rgba(212,175,55,0.6); 
+    box-shadow: inset 0 0 60px rgba(212,175,55,0.4), 0 20px 50px rgba(0,0,0,0.9); 
+}
+.state-5 .animated-face { color: var(--color-gold-metallic); animation-duration: 2s; } 
+
+/* Euphoric Arced Eyes ^ ^ */
+.state-5 .face-eye { 
+    background: transparent; border: 5px solid currentColor; border-width: 5px 5px 0 0; 
+    border-radius: 0 12px 0 0; width: 18px; height: 18px; top: 22px; box-shadow: none; filter: drop-shadow(0 0 6px currentColor);
+    animation: none;
+}
+.state-5 .face-eye.left { transform: rotate(-45deg); }
+.state-5 .face-eye.right { transform: rotate(45deg); }
+
+/* Giant open happy mouth (D shape) */
+.state-5 .face-mouth { 
+    height: 30px; border-width: 0 0 18px 0; border-radius: 0 0 40px 40px; 
+    background: rgba(212,175,55,0.3); bottom: 10px; width: 42px; box-shadow: inset 0 -10px 10px currentColor; 
+}
+.state-5 .face-blush { opacity: 1; box-shadow: 0 0 15px #ff7675; }
+.state-5 .sparkle { opacity: 1; }
+
+/* ==========================================
+   STAR RATING SYSTEM
+   ========================================== */
+.star-rating { display: flex; flex-direction: row-reverse; justify-content: flex-start; }
+.star-rating > input { display: none; }
+.star-rating > label { cursor: pointer; width: 45px; height: 45px; position: relative; margin-right: 10px; transition: 0.2s; }
+
+.star-rating > label:before {
+    content: '\f005'; 
+    font-family: "Font Awesome 6 Free"; font-weight: 900;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem;
+    color: #444; 
+    border: 1px solid rgba(255,255,255,0.1); width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center; border-radius: 4px; background: rgba(255,255,255,0.02);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.star-rating > input:checked ~ label:before,
+.star-rating > input:checked ~ label:hover:before,
+.star-rating:not(:checked) > label:hover:before,
+.star-rating:not(:checked) > label:hover ~ label:before {
+    color: var(--color-gold-metallic); border-color: var(--color-gold-metallic);
+    text-shadow: 0 0 15px rgba(212,175,55,0.8); background: rgba(212,175,55,0.1); transform: translate(-50%, -50%) scale(1.1);
+}
+
+.star-rating > input:nth-of-type(5):checked ~ label:before { color: #ff3333; border-color: #ff3333; text-shadow: 0 0 15px rgba(255,51,51,0.8); background: rgba(255,51,51,0.1); } 
+.star-rating > input:nth-of-type(4):checked ~ label:before { color: #ff9f43; border-color: #ff9f43; text-shadow: 0 0 15px rgba(255,159,67,0.8); background: rgba(255,159,67,0.1); } 
+.star-rating > input:nth-of-type(3):checked ~ label:before { color: #feca57; border-color: #feca57; text-shadow: 0 0 15px rgba(254,202,87,0.8); background: rgba(254,202,87,0.1); } 
+.star-rating > input:nth-of-type(2):checked ~ label:before { color: #00f0ff; border-color: #00f0ff; text-shadow: 0 0 15px rgba(0,240,255,0.8); background: rgba(0,240,255,0.1); } 
+
+/* Form Elements */
+.vv-floating-group { position: relative; width: 100%; }
+.vv-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.3); color: #fff; font-family: var(--font-body); font-size: 1rem; padding: 20px 0 10px 0; outline: none; transition: all 0.4s ease; }
+.vv-label { position: absolute; top: 20px; left: 0; font-size: 0.65rem; color: #e0e0e0; letter-spacing: 3px; text-transform: uppercase; pointer-events: none; transition: 0.3s ease; }
+.vv-input:focus ~ .vv-label, .vv-input:not(:placeholder-shown) ~ .vv-label { top: 0px; font-size: 0.55rem; color: #fff; }
+.vv-input:focus { border-bottom-color: var(--color-gold-metallic); background: rgba(212,175,55,0.02); padding-left: 10px; }
+.vv-input:focus ~ .vv-label { color: var(--color-gold-metallic); left: 10px; }
+
+/* Button */
+.btn-outline-gold { background: transparent; border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); font-family: var(--font-body); font-weight: 700; letter-spacing: 4px; cursor: pointer; transition: 0.3s; text-transform: uppercase; border-radius: 2px;}
+.btn-outline-gold:hover { background: var(--color-gold-metallic); color: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.2); }
+
+@media (max-width: 768px) {
+    .review-right { border-left: none; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 40px !important; }
+    .star-rating > label { width: 40px; height: 40px; margin-right: 5px;}
+    .star-rating > label:before { font-size: 1.8rem; }
+    .reaction-core { transform: scale(0.8); }
+}

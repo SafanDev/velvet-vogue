@@ -1,0 +1,99 @@
+.atelier-viewport { position: relative; width: 100vw; height: calc(100vh - 85px); background: #030303; overflow: hidden; }
+.atelier-ambient-light { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 60%); pointer-events: none; z-index: 0; }
+
+/* STAGE & MODEL LOGIC (NO MOVEMENT, NO COLOR SHIFTS) */
+.atelier-stage { position: absolute; inset: 0; display: flex; justify-content: center; align-items: flex-end; pointer-events: none; z-index: 1; }
+.stage-wrapper { height: 100%; width: 100%; position: relative; display: flex; justify-content: center; align-items: flex-end; }
+.layer { position: absolute; bottom: 0; height: 98%; width: auto; object-fit: contain; filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5)); transition: opacity 0.5s ease; }
+.base-model { transition: opacity 0.5s ease; } /* Removed all brightness filters */
+
+/* FLOATING PANELS */
+.floating-ui {
+    position: absolute; top: 30px; bottom: 30px; width: 360px;
+    background: rgba(8, 8, 8, 0.6); backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px;
+    display: flex; flex-direction: column; z-index: 10; pointer-events: auto; 
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+}
+.panel-left { left: 40px; padding: 30px; }
+.panel-right { right: 40px; padding: 0; }
+
+/* GENDER SWITCH BOX */
+.gender-switch-box { display: flex; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; padding: 4px; }
+.gen-btn { flex: 1; background: transparent; border: none; color: #888; font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; padding: 12px 0; border-radius: 4px; cursor: pointer; transition: 0.3s; }
+.gen-btn.active { background: var(--color-gold-metallic); color: #000; }
+
+/* TYPOGRAPHY & SLOTS */
+.micro-label { font-family: monospace; font-size: 0.65rem; letter-spacing: 4px; display: block; margin-bottom: 5px; text-transform: uppercase;}
+.panel-title { font-family: var(--font-heading); font-size: 2rem; color: #fff; margin: 0; }
+.panel-right .panel-header { border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+.slot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; flex-grow: 1; overflow-y: auto; align-content: start; }
+.slot-grid::-webkit-scrollbar { width: 0; } 
+.slot-btn { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px 10px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+.slot-icon { color: #666; font-size: 1.5rem; margin-bottom: 10px; transition: 0.3s; }
+.slot-name { color: #888; font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; transition: 0.3s; text-align: center;}
+.slot-btn:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+.slot-btn:hover .slot-name, .slot-btn:hover .slot-icon { color: #fff; }
+.slot-btn.active { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.4); }
+.slot-btn.active .slot-name, .slot-btn.active .slot-icon { color: var(--color-gold-metallic); }
+
+/* INVENTORY GRID & EQUIPPED STATE */
+.inventory-container { flex-grow: 1; overflow-y: auto; padding: 20px 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; align-content: start; }
+.inventory-container::-webkit-scrollbar { width: 3px; }
+.inventory-container::-webkit-scrollbar-thumb { background: var(--color-gold-metallic); border-radius: 10px; }
+
+/* MODAL SCROLL LOCK */
+body { transition: background 0.4s; }
+body[style*="overflow: hidden"] { touch-action: none; -ms-touch-action: none; }
+
+.wardrobe-item-card { position: relative; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 12px; border-radius: 8px; cursor: pointer; transition: 0.3s; text-align: center; }
+.wardrobe-item-card img { width: 100%; aspect-ratio: 1; object-fit: cover; margin-bottom: 10px; border-radius: 4px; }
+.item-name { color: #e0e0e0; font-size: 0.65rem; font-weight: 600; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 5px;}
+.price-tag { color: var(--color-gold-metallic); font-family: monospace; font-size: 0.7rem; font-weight: bold; }
+
+/* The Equipped Badge Logic */
+.equipped-badge { position: absolute; top: -8px; right: -8px; background: var(--color-gold-metallic); color: #000; font-family: monospace; font-size: 0.55rem; font-weight: bold; letter-spacing: 1px; padding: 4px 8px; border-radius: 4px; opacity: 0; transform: scale(0.8); transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 5px 10px rgba(0,0,0,0.5); z-index: 2;}
+.wardrobe-item-card.equipped { border-color: var(--color-gold-metallic); background: rgba(212, 175, 55, 0.1); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+.wardrobe-item-card.equipped .equipped-badge { opacity: 1; transform: scale(1); }
+
+/* GOLD VALUATION CARD */
+.cart-dock-card { background: rgba(10, 10, 10, 0.95); border-top: 1px solid var(--color-gold-metallic); box-shadow: 0 -10px 30px rgba(212, 175, 55, 0.1); padding: 25px 30px; border-radius: 0 0 12px 12px; flex-shrink: 0; }
+.dock-row { display: flex; justify-content: space-between; align-items: flex-end; }
+.dock-label { font-family: monospace; font-size: 0.65rem; color: #888; letter-spacing: 2px; }
+.dock-price { color: #fff; font-size: 1.6rem; font-weight: 800; font-family: var(--font-body); line-height: 1; }
+
+.btn-vogue-square { position: relative; background: #000; border: 1px solid rgba(255,255,255,0.15); padding: 16px; color: #fff; width: 100%; font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; cursor: pointer; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+.btn-vogue-square .btn-border { position: absolute; inset: 0; border: 1px solid var(--color-gold-metallic); transform: scale(1.1); opacity: 0; transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); }
+.btn-vogue-square:hover { color: var(--color-gold-metallic); }
+.btn-vogue-square:hover .btn-border { transform: scale(1); opacity: 1; }
+.btn-reset-card { background: transparent; border: none; color: #e74c3c; font-size: 0.65rem; font-family: monospace; letter-spacing: 3px; width: 100%; text-align: center; cursor: pointer; transition: 0.3s; }
+.btn-reset-card:hover { color: #fff; text-shadow: 0 0 10px rgba(231, 76, 60, 0.8); }
+
+/* FOCUS MODE BUTTON */
+.focus-mode-btn { position: absolute; top: 50%; right: calc(50% - 220px); transform: translateY(-50%); width: 45px; height: 45px; border-radius: 50%; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.15); color: #fff; cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 1rem; z-index: 20; transition: 0.3s; box-shadow: 0 10px 20px rgba(0,0,0,0.5); pointer-events: auto; }
+.focus-mode-btn:hover { background: var(--color-gold-metallic); color: #000; border-color: var(--color-gold-metallic); transform: translateY(-50%) scale(1.1); }
+.ui-hidden .panel-left { transform: translateX(-120%); opacity: 0; pointer-events: none; }
+.ui-hidden .panel-right { transform: translateX(120%); opacity: 0; pointer-events: none; }
+
+/* OUTFIT SUMMARY MODAL */
+.outfit-modal { position: fixed; inset: 0; z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: 0.4s; }
+.outfit-modal.active { opacity: 1; pointer-events: auto; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); }
+.modal-glass { position: relative; background: rgba(15,15,15,0.95); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 8px; width: 400px; max-width: 90%; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.9); transform: translateY(30px); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.outfit-modal.active .modal-glass { transform: translateY(0); }
+.modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #666; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+.modal-close:hover { color: #fff; transform: rotate(90deg); }
+.modal-title { font-family: var(--font-heading); color: var(--color-gold-metallic); font-size: 1.8rem; margin: 0; }
+.modal-subtitle { font-family: monospace; font-size: 0.65rem; color: #888; letter-spacing: 2px; display: block; margin-bottom: 30px; }
+.modal-items-list { max-height: 40vh; overflow-y: auto; margin-bottom: 30px; padding-right: 10px; }
+.modal-items-list::-webkit-scrollbar { width: 2px; }
+.modal-items-list::-webkit-scrollbar-thumb { background: #333; }
+.summary-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.summary-item img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
+.summary-details { flex-grow: 1; }
+.summary-name { color: #fff; font-size: 0.8rem; font-weight: 600; display: block; }
+.summary-price { color: var(--color-gold-metallic); font-family: monospace; font-size: 0.75rem; }
+
+.loader-vogue { width: 30px; height: 30px; border: 2px solid rgba(212,175,55,0.1); border-top-color: var(--color-gold-metallic); border-radius: 50%; animation: spin 0.8s linear infinite; margin: 40px auto; grid-column: span 2; }

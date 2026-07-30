@@ -1,0 +1,170 @@
+/* ==========================================================================
+   VELVET VOGUE - PRODUCT ADD CSS
+   ========================================================================== */
+
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.massive-title { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; letter-spacing: 1px; color: #fff;}
+
+.atelier-card {
+    background: #080808; border-radius: 4px; padding: 35px; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8); border: 1px solid var(--border-subtle);
+}
+
+.top-glow-card { border-top: 2px solid var(--color-gold-metallic); }
+
+.card-top-flare {
+    position: absolute; top: 0; left: 0; right: 0; height: 1px; 
+    background: linear-gradient(90deg, transparent, var(--color-gold-metallic), transparent); 
+    box-shadow: 0 0 15px var(--color-gold-metallic); opacity: 0.5; z-index: 1;
+}
+
+.blueprint-lines {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: 0.15;
+    background-image: linear-gradient(rgba(212,175,55,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.3) 1px, transparent 1px);
+    background-size: 40px 40px; 
+}
+
+.form-section-title {
+    font-family: var(--font-heading); color: var(--color-gold-metallic);
+    font-size: 1.3rem; margin-bottom: 30px; letter-spacing: 1px; position: relative; z-index: 2;
+}
+
+/* ==========================================
+   FORM VALIDATION (The Red Line - !important override)
+   ========================================== */
+.error-border { 
+    border-bottom-color: #e74c3c !important; 
+    box-shadow: 0 5px 15px -5px rgba(231, 76, 60, 0.4) !important;
+}
+.error-border-wrapper { 
+    border-color: #e74c3c !important; 
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.4) !important;
+}
+
+.luxury-input.error-border:focus { border-bottom-color: #e74c3c !important; }
+.input-wrapper.error-border-wrapper:focus-within { border-color: #e74c3c !important; }
+
+/* ==========================================
+   LUXURY FLOATING INPUTS & TEXTAREA
+   ========================================== */
+.form-floating-custom { position: relative; width: 100%; z-index: 2; }
+.luxury-input {
+    width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #fff; font-family: var(--font-body); font-size: 0.95rem; padding: 15px 0 10px 0;
+    transition: all 0.3s ease; outline: none; appearance: none; -webkit-appearance: none; border-radius: 0;
+}
+.luxury-input:focus { border-bottom-color: var(--color-gold-metallic); box-shadow: 0 5px 15px -5px rgba(212,175,55,0.1); }
+.form-floating-custom label {
+    position: absolute; top: 15px; left: 0; color: #777; font-family: var(--font-body);
+    font-size: 0.8rem; letter-spacing: 1px; pointer-events: none; transition: all 0.3s ease; text-transform: uppercase;
+}
+.luxury-input:focus ~ label,
+.luxury-input:not(:placeholder-shown) ~ label { top: -10px; font-size: 0.65rem; color: var(--color-gold-metallic); font-weight: 600; }
+.select-icon { position: absolute; right: 5px; top: 50%; transform: translateY(-50%); color: var(--color-gold-metallic); pointer-events: none; font-size: 0.8rem; }
+.luxury-input option { background-color: #111; color: #fff; padding: 10px;}
+
+/* ==========================================
+   PILL SELECTORS
+   ========================================== */
+.simple-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #888; display: block; }
+.attr-pill {
+    border: 1px solid rgba(255,255,255,0.1); padding: 6px 14px; border-radius: 20px;
+    color: #aaa; font-family: var(--font-body); font-size: 0.75rem; cursor: pointer;
+    transition: all 0.3s ease; display: inline-flex; align-items: center; gap: 6px; user-select: none;
+}
+.attr-pill:hover { border-color: rgba(212,175,55,0.5); color: #fff; }
+.attr-pill.active { border-color: var(--color-gold-metallic); background: rgba(212,175,55,0.1); color: var(--color-gold-metallic); font-weight: 600; }
+.color-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+/* ==========================================
+   MULTIPLE DROP ZONES AND IMAGE QUEUE
+   ========================================== */
+.luxury-dropzone-wrapper { margin-bottom: 15px; }
+.dropzone-title { display: block; font-family: var(--font-body); font-size: 0.65rem; font-weight: 700; color: var(--color-gold-metallic); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+.luxury-dropzone { width: 100%; height: 120px; border: 1px dashed var(--border-subtle); border-radius: 4px; background: rgba(255,255,255,0.02); position: relative; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; overflow: hidden; }
+.luxury-dropzone:hover { background: rgba(212,175,55,0.03); border-color: var(--color-gold-metallic); }
+.dropzone-content { text-align: center; pointer-events: none; }
+.dropzone-icon { font-size: 1.5rem; color: #666; margin-bottom: 5px; display: block; transition: color 0.3s ease; }
+.luxury-dropzone:hover .dropzone-icon { color: var(--color-gold-metallic); }
+.dropzone-text { display: block; color: #888; font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 1px; }
+
+/* Smart Image Thumbnails */
+.mini-preview-wrap { position: relative; display: inline-block; }
+.mini-preview-img { width: 55px; height: 55px; object-fit: cover; border-radius: 2px; border: 1px solid var(--border-subtle); }
+.img-remove-btn { position: absolute; top: -5px; right: -5px; width: 18px; height: 18px; background: #e74c3c; color: #fff; border: none; border-radius: 50%; font-size: 0.55rem; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.5); transition: 0.2s; z-index: 10; padding:0; }
+.img-remove-btn:hover { background: #c0392b; transform: scale(1.1); }
+
+/* ==========================================
+   VARIANT BUILDER & NUMBER SPINNERS (FLEX FIX)
+   ========================================== */
+.luxury-input-small { 
+    width: 100%; 
+    background: transparent; 
+    border: none; 
+    color: #fff; 
+    font-family: var(--font-body); 
+    font-size: 0.8rem; 
+    padding: 8px 4px; /* Reduced side padding to give numbers more space */
+    outline: none; 
+    transition: 0.3s;
+    flex: 1; /* Allow input to dynamically fill space without blowing out */
+    min-width: 0; /* Prevents long numbers from breaking flex layout */
+    text-align: center;
+}
+.luxury-input-small::placeholder { color: #555; }
+.text-gold { color: var(--color-gold-metallic) !important; }
+
+.input-wrapper { 
+    background: rgba(255,255,255,0.02); 
+    border: 1px solid rgba(255,255,255,0.1); 
+    border-radius: 2px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    transition: 0.3s; 
+    overflow: hidden; 
+}
+.input-wrapper:focus-within { border-color: var(--color-gold-metallic); background: #000; }
+
+.num-btn { 
+    flex-shrink: 0; /* Ensures the + and - buttons don't get squished */
+    background: transparent; 
+    border: none; 
+    color: #888; 
+    padding: 0 8px; /* Slightly reduced button padding to maximize number visibility */
+    cursor: pointer; 
+    transition: 0.3s; 
+    font-size: 1.2rem; 
+    line-height: 1; 
+}
+.num-btn:hover { color: var(--color-gold-metallic); }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+input[type=number] { appearance: textfield; -moz-appearance: textfield; text-align: center; }
+
+/* ==========================================
+   LUXURY TOGGLE SWITCH
+   ========================================== */
+.luxury-switch { position: relative; display: inline-block; width: 46px; height: 22px; z-index: 2;}
+.luxury-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #222; transition: .4s; border-radius: 34px; border: 1px solid var(--border-subtle); }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: #666; transition: .4s; border-radius: 50%; }
+.luxury-switch input:checked + .slider { background-color: rgba(212,175,55,0.1); border-color: var(--color-gold-metallic); }
+.luxury-switch input:checked + .slider:before { transform: translateX(24px); background-color: var(--color-gold-metallic); box-shadow: 0 0 10px var(--color-gold-metallic); }
+
+/* ==========================================
+   BUTTONS & UTILS
+   ========================================== */
+.btn-luxury-solid { position: relative; background: var(--color-gold-metallic); color: #000; border: none; padding: 14px 35px; font-family: var(--font-body); font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; overflow: hidden; display: inline-flex; align-items: center; border-radius: 2px; transition: 0.4s ease; cursor: pointer; }
+.btn-luxury-solid:hover { box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); transform: translateY(-2px); }
+.btn-stealth { background: transparent; border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); font-family: var(--font-body); font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; padding: 12px 25px; cursor: pointer; transition: 0.3s; text-transform: uppercase; border-radius: 2px; display: inline-flex; justify-content: center; align-items: center; text-decoration: none; }
+.btn-stealth:hover { background: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.4); text-decoration: none; border-color: var(--color-gold-metallic); color: var(--color-gold-metallic);}
+.btn-action-ghost { color: #888; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; font-family: var(--font-body); font-weight: 600; display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; text-decoration: none; border: none; background: transparent; cursor: pointer; }
+.btn-action-ghost:hover { color: #fff; text-decoration: none; }
+.pointer-events-none { pointer-events: none; }
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.3); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--color-gold-metallic); }

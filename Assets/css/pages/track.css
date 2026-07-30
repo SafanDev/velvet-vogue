@@ -1,0 +1,163 @@
+/* ==========================================================================
+   VELVET VOGUE - LOGISTICS TRACKER CSS
+   ========================================================================== */
+
+.tracking-wrapper { background-color: #040404; min-height: 85vh; font-family: var(--font-body); color: #fff; padding-bottom: 100px; overflow: hidden; position: relative; }
+
+.tracking-title { font-family: var(--font-heading); font-size: 3rem; color: #fff; letter-spacing: 8px; margin: 0; text-transform: uppercase; }
+.tracking-luxury { font-family: var(--font-body); letter-spacing: 4px; text-transform: uppercase; font-weight: 600;}
+.font-monospace { font-family: "Courier New", Courier, monospace; letter-spacing: 1px; }
+.border-bottom-dark { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.text-silver { color: #aaaaaa !important; }
+
+/* GRID BACKGROUND */
+.transit-grid-bg {
+    position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background-image: linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px; z-index: 1; pointer-events: none; transform-origin: center top;
+    transform: perspective(1000px) rotateX(60deg); animation: gridForward 15s linear infinite;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%);
+}
+@keyframes gridForward { 0% { background-position: 0 0; } 100% { background-position: 0 60px; } }
+
+/* ==========================================
+   SEARCH TERMINAL
+   ========================================== */
+.tracking-search-terminal { min-height: 60vh; position: relative; z-index: 5; }
+
+.bespoke-search-icon { width: 120px; height: 120px; display: flex; align-items: center; justify-content: center; margin: 0 auto; }
+.tailor-ring { position: absolute; inset: 0; border: 1px dashed rgba(212,175,55,0.4); border-radius: 50%; }
+.ring-fast { border-top-color: transparent; border-bottom-color: transparent; animation: spinRing 4s linear infinite; }
+.ring-slow { border-left-color: transparent; border-right-color: transparent; animation: spinRing 8s linear infinite reverse; width: 140px; height: 140px; top: -10px; left: -10px; }
+@keyframes spinRing { 100% { transform: rotate(360deg); } }
+
+.tracking-input {
+    width: 100%; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); 
+    color: #fff; font-size: 2rem; padding: 25px 20px; outline: none; transition: 0.3s;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); letter-spacing: 5px;
+}
+.tracking-input:focus { border-color: var(--color-gold-metallic); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
+.tracking-input::placeholder { color: rgba(255,255,255,0.1); letter-spacing: 2px; }
+.input-glow-line { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 0%; height: 2px; background: var(--color-gold-metallic); transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 0 15px var(--color-gold-metallic); }
+.tracking-input:focus ~ .input-glow-line { width: 100%; }
+
+.btn-outline-gold { background: rgba(0,0,0,0.5); border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); font-family: var(--font-body); font-weight: 700; letter-spacing: 4px; cursor: pointer; transition: 0.3s; text-transform: uppercase; border-radius: 0; backdrop-filter: blur(5px); }
+.btn-outline-gold:hover { background: var(--color-gold-metallic); color: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.2); }
+
+/* ==========================================
+   TIMELINE HUD (LEFT)
+   ========================================== */
+.btn-text-silver { background: transparent; border: none; color: #aaaaaa; font-size: 0.7rem; letter-spacing: 3px; transition: 0.3s; padding: 0; font-weight: 600; text-decoration: none;}
+.btn-text-silver:hover { color: #fff; text-decoration: none; }
+
+.tracking-timeline-container { position: relative; padding-left: 60px; padding-bottom: 30px; }
+.timeline-track { position: absolute; top: 20px; bottom: 0; left: 24px; width: 2px; background: rgba(255,255,255,0.05); z-index: 1; }
+.timeline-pulse-traveler {
+    position: absolute; top: 20px; left: 20px; width: 10px; height: 10px; border-radius: 50%;
+    background: var(--color-gold-metallic); box-shadow: 0 0 15px var(--color-gold-metallic), 0 0 30px var(--color-gold-metallic); z-index: 3; opacity: 0;
+}
+
+.t-node { position: relative; margin-bottom: 50px; z-index: 2; opacity: 0.3; transition: 0.5s ease; transform: translateX(10px); }
+.t-node:last-child { margin-bottom: 0; }
+.node-indicator { position: absolute; left: -60px; top: 0; width: 50px; height: 50px; background: #080808; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #555; transition: 0.5s ease; }
+.node-content { padding-top: 10px; }
+.node-title { font-family: var(--font-heading); font-size: 1.4rem; color: #fff; letter-spacing: 2px; margin-bottom: 8px; text-transform: uppercase; }
+.node-desc { font-size: 0.85rem; color: #888; line-height: 1.6; margin-bottom: 8px; max-width: 85%; }
+.node-time { font-size: 0.75rem; color: #555; }
+
+.t-node.completed { opacity: 1; transform: translateX(0); }
+.t-node.completed .node-indicator { border-color: rgba(212,175,55,0.3); color: var(--color-gold-metallic); }
+.t-node.current { opacity: 1; transform: translateX(0); }
+.t-node.current .node-indicator { background: rgba(212,175,55,0.1); border-color: var(--color-gold-metallic); color: var(--color-gold-metallic); box-shadow: inset 0 0 20px rgba(212,175,55,0.2); }
+.t-node.current .node-title { color: var(--color-gold-metallic); text-shadow: 0 0 10px rgba(212,175,55,0.3); }
+@keyframes textFlicker { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; text-shadow: 0 0 8px rgba(212,175,55,0.8); } }
+
+/* ==========================================
+   THE VIP LOGISTICS LOCATOR (RIGHT)
+   ========================================== */
+.telemetry-panel {
+    background: rgba(10,10,12,0.8); border: 1px solid rgba(212,175,55,0.2); border-radius: 4px;
+    height: 100%; min-height: 480px; display: flex; flex-direction: column;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+}
+.tp-header { padding: 15px 20px; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.4); display: flex; justify-content: space-between; align-items: center; }
+.live-dot { width: 8px; height: 8px; background: var(--color-gold-metallic); border-radius: 50%; box-shadow: 0 0 8px var(--color-gold-metallic); animation: liveBlink 1s infinite; }
+@keyframes liveBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+.vip-locator-container {
+    position: relative; flex-grow: 1; background: #050505; overflow: hidden;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px;
+}
+
+/* 1. The GPS Visualizer */
+.gps-visualizer {
+    position: relative; width: 220px; height: 220px; margin-bottom: 30px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.gps-grid {
+    position: absolute; inset: 0; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 20px 20px; background-position: center center;
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%);
+}
+
+.gps-ring { position: absolute; border-radius: 50%; border: 1px solid rgba(212,175,55,0.2); pointer-events: none; }
+.ring-outer { width: 100%; height: 100%; border-style: dashed; animation: orbitCurve 30s linear infinite; }
+.ring-inner { width: 60%; height: 60%; border-color: rgba(255,255,255,0.1); }
+
+/* The Destination (Center Point) */
+.gps-destination {
+    position: relative; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+    color: var(--color-gold-metallic); font-size: 1.2rem; text-shadow: 0 0 10px rgba(212,175,55,0.8); z-index: 5;
+}
+.dest-pulse {
+    position: absolute; inset: 0; border: 1px solid var(--color-gold-metallic); border-radius: 50%;
+    animation: targetPulse 2s infinite;
+}
+@keyframes targetPulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+/* The Sweeping Radar Beam */
+.gps-sweep {
+    position: absolute; top: 0; left: 50%; width: 50%; height: 50%;
+    transform-origin: bottom left; background: conic-gradient(from 0deg, transparent 60%, rgba(212,175,55,0.3) 100%);
+    animation: orbitCurve 4s linear infinite; z-index: 2; pointer-events: none;
+}
+
+/* Orbiting Courier (The Vehicle) */
+.gps-orbit-path {
+    position: absolute; width: 80%; height: 80%; border-radius: 50%;
+    animation: orbitCurve 15s linear infinite; z-index: 10; pointer-events: none;
+}
+.gps-courier-blip {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    width: 24px; height: 24px; background: #111; border: 1px solid var(--color-gold-metallic);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    color: var(--color-gold-metallic); font-size: 0.6rem; box-shadow: 0 0 15px rgba(212,175,55,0.8);
+    /* Counter-rotate so the icon stays upright while orbiting */
+    animation: counterOrbit 15s linear infinite;
+}
+
+@keyframes orbitCurve { 100% { transform: rotate(360deg); } }
+@keyframes counterOrbit { 100% { transform: translateX(-50%) rotate(-360deg); } }
+
+/* 2. Live Logistics HUD */
+.logistics-hud { width: 100%; position: relative; z-index: 15; }
+.hud-data-row { display: flex; justify-content: space-between; align-items: flex-end; }
+.hdr-col { display: flex; flex-direction: column; gap: 6px; }
+.hdr-label { font-size: 0.65rem; color: #aaaaaa; letter-spacing: 3px; font-weight: 600; text-transform: uppercase; }
+.hdr-val { font-size: 0.95rem; font-family: var(--font-monospace); font-weight: 700; letter-spacing: 1px; }
+.text-success { color: #1dd1a1 !important; text-shadow: 0 0 10px rgba(29, 209, 161, 0.4); }
+
+@media (max-width: 991px) {
+    .tracking-active-state { padding: 0 20px; }
+    .tracking-timeline-container { padding-left: 40px; margin-bottom: 50px; }
+    .timeline-track { left: 14px; }
+    .timeline-pulse-traveler { left: 10px; }
+    .node-indicator { left: -40px; width: 30px; height: 30px; font-size: 0.8rem; }
+    .node-title { font-size: 1.1rem; }
+    .vip-locator-container { padding: 30px 20px; }
+    .gps-visualizer { width: 180px; height: 180px; }
+}

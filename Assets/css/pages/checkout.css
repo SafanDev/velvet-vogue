@@ -1,0 +1,200 @@
+/* ==========================================================================
+   VELVET VOGUE - EDITORIAL CHECKOUT CSS
+   ========================================================================== */
+
+.checkout-wrapper { background-color: var(--color-bg-matte); min-height: 85vh; font-family: var(--font-body); color: #fff; padding-bottom: 100px; }
+
+/* Micro Typography */
+.checkout-title { font-family: var(--font-heading); font-size: 2.2rem; color: #fff; letter-spacing: 6px; margin-bottom: 5px; text-transform: uppercase; }
+.tracking-luxury { font-family: var(--font-body); letter-spacing: 4px; text-transform: uppercase; font-weight: 600;}
+
+.border-bottom-dark { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.border-top-dark { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.border-dark { border: 1px solid rgba(255,255,255,0.1); }
+
+.text-silver { color: #aaaaaa !important; }
+
+/* ==========================================
+   LEFT COLUMN: INVISIBLE ACCORDION
+   ========================================== */
+.co-step { border-bottom: 1px solid rgba(255,255,255,0.1); padding: 40px 0; transition: 0.4s ease; opacity: 0.3; }
+.co-step.active { opacity: 1; border-bottom-color: var(--color-gold-metallic); }
+
+/* Locked/Completed State */
+.co-step.completed { opacity: 0.6; }
+.co-step.completed .step-header { cursor: pointer; }
+.co-step.completed:hover { opacity: 0.9; }
+
+.step-header { display: flex; align-items: center; justify-content: space-between; position: relative; }
+.step-num { font-family: var(--font-body); font-size: 0.8rem; color: #555; letter-spacing: 2px; margin-right: 20px; font-weight: 700; transition: 0.3s; }
+.step-title { font-family: var(--font-heading); font-size: 1.2rem; color: #fff; letter-spacing: 4px; margin: 0; text-transform: uppercase; transition: 0.3s; flex-grow: 1; }
+
+.step-check { color: var(--color-gold-metallic); font-size: 1.2rem; opacity: 0; transform: scale(0.5); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.co-step.active .step-title, .co-step.active .step-num { color: var(--color-gold-metallic); }
+.co-step.completed .step-check { opacity: 1; transform: scale(1); }
+.co-step.completed .step-header { cursor: pointer; }
+.co-step.completed:hover .step-title { color: #fff; }
+
+.step-body { padding: 30px 0 10px 40px; }
+
+/* Minimalist Radio Lists */
+.saved-data-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.vv-minimal-radio { display: flex; align-items: center; padding: 25px 0; border-bottom: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: 0.3s; }
+.vv-minimal-radio:hover .r-title { color: #fff; }
+
+.radio-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid #555; position: relative; transition: 0.3s; flex-shrink: 0; }
+.vv-minimal-radio.active .radio-dot { border-color: var(--color-gold-metallic); }
+.vv-minimal-radio.active .radio-dot::after { content: ''; position: absolute; top: 3px; left: 3px; width: 6px; height: 6px; background: var(--color-gold-metallic); border-radius: 50%; }
+
+.radio-content { display: flex; flex-direction: column; width: 100%; }
+.r-title { font-size: 0.85rem; color: #aaa; letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; font-family: var(--font-body); font-weight: 600;}
+.vv-minimal-radio.active .r-title { color: var(--color-gold-metallic); }
+.r-desc { font-size: 0.8rem; font-family: var(--font-body); }
+
+/* ==========================================
+   ACTIVE FIELD ANIMATIONS (GLOW & FLOAT)
+   ========================================== */
+.vv-floating-group { position: relative; width: 100%; margin-bottom: 10px; }
+.vv-input { 
+    width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); 
+    color: #fff; font-family: var(--font-body); font-size: 0.95rem; padding: 20px 0 10px 0; outline: none; border-radius: 0;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.vv-input:-webkit-autofill { -webkit-box-shadow: 0 0 0 50px var(--color-bg-matte) inset !important; -webkit-text-fill-color: #fff !important; }
+
+.vv-label { 
+    position: absolute; top: 20px; left: 0; font-size: 0.65rem; color: #666; 
+    letter-spacing: 3px; text-transform: uppercase; pointer-events: none; transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+/* Magic Floating Logic & Glowing Effect */
+.vv-input:focus ~ .vv-label, .vv-input:not(:placeholder-shown) ~ .vv-label {
+    top: -2px; font-size: 0.55rem; color: #aaa;
+}
+.vv-input:focus { 
+    border-bottom-color: var(--color-gold-metallic); 
+    background: rgba(212,175,55,0.02);
+    box-shadow: 0 8px 15px -8px rgba(212,175,55,0.3); /* The elegant glow */
+    padding-left: 10px; /* Slight indent on focus */
+}
+.vv-input:focus ~ .vv-label { color: var(--color-gold-metallic); left: 10px; }
+
+/* CSS-Only Validation Feedback */
+.vv-input:valid:not(:placeholder-shown) { border-bottom-color: rgba(212,175,55, 0.4); padding-left: 0; background: transparent; box-shadow: none; }
+.vv-input:valid:not(:placeholder-shown) ~ .vv-label { color: var(--color-gold-metallic); left: 0; }
+
+/* ==========================================
+   "NEXT GO" ANIMATED BUTTONS
+   ========================================== */
+.btn-next-step { 
+    background: #fff; border: none; color: #000; font-family: var(--font-body); font-weight: 700; 
+    letter-spacing: 3px; padding: 18px 30px; font-size: 0.8rem; cursor: pointer; text-transform: uppercase; 
+    border-radius: 0; position: relative; overflow: hidden; z-index: 1;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-next-step::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; 
+    background: var(--color-gold-metallic); z-index: -1; transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-next-step .icon-arrow { transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+
+.btn-next-step:hover { color: #000; padding-left: 35px; padding-right: 25px; box-shadow: 0 10px 20px rgba(212,175,55,0.2); }
+.btn-next-step:hover::before { left: 0; }
+.btn-next-step:hover .icon-arrow { transform: translateX(8px); }
+
+.btn-prev-step { background: transparent; border: none; color: #666; font-size: 0.75rem; letter-spacing: 3px; cursor: pointer; transition: 0.3s; padding: 0 20px 0 0; text-transform: uppercase; font-weight: 600;}
+.btn-prev-step:hover { color: #fff; }
+
+/* ==========================================
+   RIGHT COLUMN: THE GHOST DOSSIER
+   ========================================== */
+.sticky-summary { position: sticky; top: 120px; }
+.summary-ghost-box { 
+    background: rgba(10,10,10, 0.4); 
+    padding: 40px 35px; 
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 4px;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: background 0.4s, border-color 0.4s;
+}
+.summary-ghost-box:hover { background: rgba(10,10,10, 0.7); border-color: rgba(212,175,55,0.2); }
+
+.summary-title { font-family: var(--font-heading); font-size: 1.1rem; color: #888; letter-spacing: 5px; margin: 0; text-transform: uppercase; }
+
+.mini-img-wrap { width: 55px; aspect-ratio: 3/4; overflow: hidden; background: #000; border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;}
+.mini-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+.ci-name { font-family: var(--font-heading); font-size: 0.9rem; color: #fff; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+.ci-variant { font-family: var(--font-body); font-size: 0.65rem; color: #888; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 4px; }
+.ci-price { font-family: var(--font-body); font-size: 0.85rem; color: var(--color-gold-metallic); letter-spacing: 1px; font-weight: 500; }
+
+.sl-label { font-family: var(--font-body); font-size: 0.7rem; color: #888; letter-spacing: 3px; font-weight: 600; }
+.sl-value { font-family: var(--font-body); font-size: 0.9rem; color: #fff; letter-spacing: 1px; font-weight: 500;}
+.st-label { font-family: var(--font-heading); font-size: 0.9rem; color: #fff; letter-spacing: 3px; font-weight: 600;}
+.st-value { font-family: var(--font-body); font-size: 1.6rem; color: var(--color-gold-metallic); letter-spacing: 1px; display: inline-block; line-height: 1; font-weight: 600;}
+
+/* BUTTONS / PROMO MODULE */
+.btn-outline-gold { background: transparent; border: 1px solid var(--color-gold-metallic); color: var(--color-gold-metallic); font-family: var(--font-body); font-weight: 700; font-size: 0.8rem; letter-spacing: 4px; padding: 20px 30px; cursor: pointer; transition: 0.3s; text-transform: uppercase; border-radius: 0; }
+.btn-outline-gold:hover { background: var(--color-gold-metallic); color: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.2); }
+.btn-text-danger { background: transparent; border: none; color: #888; font-weight: 600; transition: 0.3s; padding: 0; }
+.btn-text-danger:hover { color: #ff4d4d; }
+
+/* THE NEW SOLID GOLD PLACE ORDER BUTTON */
+.btn-premium-solid {
+    background: linear-gradient(135deg, #d4af37 0%, #aa8529 100%);
+    color: #000;
+    border: none;
+    padding: 18px 30px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.4);
+    width: 100%;
+}
+.btn-premium-solid:hover {
+    background: linear-gradient(135deg, #ffe299 0%, #d4af37 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(212,175,55,0.3), inset 0 1px 1px rgba(255,255,255,0.6);
+}
+.btn-premium-solid:hover i {
+    transform: translateX(5px);
+}
+.btn-premium-solid:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 10px rgba(212,175,55,0.2);
+}
+
+
+/* ==========================================
+   CINEMATIC SUCCESS MODAL (Digital Receipt)
+   ========================================== */
+.vv-success-modal { position: fixed; inset: 0; background: rgba(5,5,5,0.95); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.6s ease; }
+.vv-success-modal.active { opacity: 1; pointer-events: auto; }
+.success-receipt { background: #050505; border: 1px solid rgba(255,255,255,0.05); padding: 60px 50px; border-radius: 2px; box-shadow: 0 30px 80px rgba(0,0,0,0.9); max-width: 480px; width: 100%; transform: translateY(30px) scale(0.95); transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; }
+.vv-success-modal.active .success-receipt { transform: translateY(0) scale(1); opacity: 1; transition-delay: 0.2s; }
+
+/* The Animated Gold Ring */
+.success-ring-anim { width: 70px; height: 70px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.3); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; color: var(--color-gold-metallic); position: relative; animation: pulseGlow 3s infinite; }
+.success-ring-anim::before { content: ''; position: absolute; inset: -4px; border: 1px solid var(--color-gold-metallic); border-radius: 50%; border-top-color: transparent; border-bottom-color: transparent; animation: spinRing 2s linear infinite; }
+@keyframes spinRing { 100% { transform: rotate(360deg); } }
+@keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(212,175,55,0.1); } 50% { box-shadow: 0 0 30px rgba(212,175,55,0.4); } }
+
+.success-title { font-family: var(--font-heading); font-size: 1.6rem; color: #fff; letter-spacing: 5px; text-transform: uppercase; }
+
+/* The Sleek Order ID Box */
+.order-id-display { background: rgba(255,255,255,0.02); }
+
+@media (max-width: 991px) {
+    .step-body { padding-left: 0; }
+    .summary-ghost-box { border: none; padding: 20px 0; background: transparent; backdrop-filter: none; }
+    .success-receipt { padding: 40px 20px; border-left: none; border-right: none; }
+}

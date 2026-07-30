@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Velvet Vogue monogram</title>
+  <desc id="desc">An original interlocking double V monogram in muted gold and warm ivory on deep black.</desc>
+  <rect width="512" height="512" rx="112" fill="#0b0b0d"/>
+  <path d="M92 108h62l102 230 102-230h62L286 414h-60L92 108Z" fill="#c8a35d"/>
+  <path d="M132 108h44l80 180 80-180h44L276 346h-40L132 108Z" fill="#0b0b0d"/>
+  <path d="M78 108h58l111 252-29 54L78 108Z" fill="#eee6d8"/>
+  <path d="M156 108h44l70 158-25 57-89-215Z" fill="#0b0b0d"/>
+  <path d="M246 323l30 68 132-283h-58L246 323Z" fill="#c8a35d"/>
+  <path d="M247 323l25 57 25-54-25-57-25 54Z" fill="#eee6d8"/>
+</svg>

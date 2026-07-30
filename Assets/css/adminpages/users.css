@@ -1,0 +1,203 @@
+/* ==========================================================================
+   VELVET VOGUE - CLIENT DOSSIER CSS
+   ========================================================================== */
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #000;
+}
+
+.text-silver { color: #cccccc !important; }
+.text-gold { color: var(--color-gold-metallic) !important; }
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.massive-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; letter-spacing: 1px; color: #fff;}
+.simple-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #aaa; display: block; }
+.badge-count { background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+.bg-gold { background-color: var(--color-gold-metallic) !important; }
+
+/* ==========================================
+   SPOTLIGHT 3D METRIC CARDS
+   ========================================== */
+.metric-card { 
+    background: #080808; border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; 
+    padding: 25px 20px; display: flex; align-items: center; gap: 20px; position: relative; 
+    overflow: hidden; will-change: transform; transform-style: preserve-3d; cursor: default;
+}
+.metric-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.1), transparent 40%); opacity: 0; transition: opacity 0.4s ease; z-index: 0; pointer-events: none;}
+.metric-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.6), transparent 40%); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask-composite: exclude; opacity: 0; transition: opacity 0.4s ease; z-index: 1; pointer-events: none;}
+.metric-card:hover::before, .metric-card:hover::after { opacity: 1; }
+.metric-card:hover { z-index: 10; box-shadow: 0 15px 30px rgba(0,0,0,0.8), 0 0 20px rgba(212,175,55,0.05); }
+
+.metric-icon { font-size: 2rem; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2; transform: translateZ(30px); }
+.metric-card:hover .metric-icon { transform: translateZ(40px) scale(1.1); }
+.metric-info { position: relative; z-index: 2; display: flex; flex-direction: column; transform: translateZ(20px); }
+.metric-label { font-size: 0.75rem; letter-spacing: 2px; color: #888; text-transform: uppercase; margin-bottom: 3px; font-weight: 600; }
+.metric-value { font-family: var(--font-heading); font-size: 1.8rem; color: #fff; line-height: 1; font-weight: 700; }
+
+/* ==========================================
+   WORLD CLASS BUTTONS
+   ========================================== */
+
+/* Button 1: Nebula Edge */
+.btn-nebula {
+    position: relative;
+    background: #080808;
+    color: #fff;
+    border: none;
+    padding: 0 25px;
+    height: 42px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+}
+.btn-nebula::before {
+    content: ''; position: absolute; inset: -2px; z-index: -1;
+    background: conic-gradient(from 0deg, transparent, var(--color-gold-metallic), transparent 40%);
+    animation: rotateNebula 4s linear infinite;
+}
+.btn-nebula::after {
+    content: ''; position: absolute; inset: 1px;
+    background: #0a0a0a; border-radius: 3px; z-index: -1;
+    transition: background 0.3s;
+}
+.btn-nebula:hover::after { background: #111; }
+.btn-nebula i { color: var(--color-gold-metallic); transition: transform 0.4s ease; }
+.btn-nebula:hover i { transform: rotate(90deg); }
+
+@keyframes rotateNebula { 100% { transform: rotate(360deg); } }
+
+/* Button 2: Gold Core Sweep (Create Button) */
+.btn-core-solid {
+    position: relative;
+    background: transparent;
+    color: var(--color-gold-metallic);
+    border: 1px solid var(--color-gold-metallic);
+    padding: 16px 30px;
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+}
+.btn-core-solid::before {
+    content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+    background: var(--color-gold-metallic); z-index: -1; transition: left 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-core-solid:hover { color: #000; padding-left: 45px; padding-right: 15px;}
+.btn-core-solid:hover::before { left: 0; }
+
+/* Tactical Search */
+.tactical-search { position: relative; width: 300px; }
+.search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #666; font-size: 0.8rem; pointer-events: none; transition: 0.3s; }
+.search-input { width: 100%; height: 42px; background: transparent; border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0 15px 0 35px; border-radius: 4px; font-family: var(--font-body); font-size: 0.85rem; transition: 0.3s; outline: none; font-weight: 400;}
+.search-input::placeholder { color: #666; }
+.search-input:focus { border-color: var(--color-gold-metallic); box-shadow: 0 0 10px rgba(212,175,55,0.1); }
+.search-input:focus + .search-icon { color: var(--color-gold-metallic); }
+
+/* ==========================================
+   THE SOLID LEDGER TABLE
+   ========================================== */
+.table-container-solid {
+    background: #000000; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+.custom-ledger-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+.custom-ledger-table th { 
+    font-family: var(--font-body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #888; 
+    padding: 22px 15px; border-bottom: 1px solid rgba(255,255,255,0.1); background: #080808; font-weight: 600; white-space: nowrap;
+}
+.custom-ledger-table td { padding: 22px 15px; border-bottom: 1px solid rgba(255,255,255,0.05); vertical-align: middle; transition: background-color 0.3s; background: transparent; }
+
+/* Subtle Row Hover */
+.ledger-row { transition: all 0.3s ease; position: relative;}
+.ledger-row:hover td { background: rgba(255,255,255,0.02); }
+
+/* Banned users fade out slightly */
+.row-suspended td { opacity: 0.4; filter: grayscale(100%); transition: 0.3s; }
+.row-suspended:hover td { opacity: 0.8; }
+
+/* Table Text Formats */
+.data-text { font-size: 0.85rem; font-weight: 500; }
+.data-title { letter-spacing: 1px; font-weight: 600; transition: color 0.3s ease;}
+.data-subtext { font-family: var(--font-body); font-size: 0.8rem; color: #888; letter-spacing: 0.5px;}
+
+/* "Your Account" Protected Badge */
+.protected-badge {
+    height: 38px; display: inline-flex; align-items: center; padding: 0 15px;
+    background: rgba(212,175,55,0.1); color: var(--color-gold-metallic);
+    border: 1px solid rgba(212,175,55,0.3); border-radius: 4px;
+    font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;
+}
+
+/* ==========================================
+   DROPDOWNS & TOGGLES
+   ========================================== */
+.elegant-select-wrapper { position: relative; display: inline-block; width: 140px; background: #000; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; transition: 0.3s;}
+.elegant-select-wrapper:hover { border-color: rgba(255,255,255,0.4); }
+.elegant-select { 
+    appearance: none; -webkit-appearance: none; width: 100%; height: 38px; background: transparent; border: none; 
+    padding: 0 15px; font-family: var(--font-body); font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase; cursor: pointer; outline: none; transition: 0.3s;
+}
+.select-arrow { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 0.7rem; pointer-events: none; color: #888;}
+.elegant-select option { background: #111; font-weight: 500; }
+
+/* The Luxury Toggle (Active/Ban) */
+.luxury-switch { position: relative; display: inline-flex; align-items: center; gap: 10px; cursor: pointer; }
+.luxury-switch input { opacity: 0; width: 0; height: 0; position: absolute; }
+.slider { 
+    position: relative; width: 40px; height: 20px; background-color: rgba(231, 76, 60, 0.1); border-radius: 34px; 
+    transition: .4s; border: 1px solid #e74c3c; 
+}
+.slider:before { 
+    position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; 
+    background-color: #e74c3c; transition: .4s cubic-bezier(0.16, 1, 0.3, 1); border-radius: 50%; box-shadow: 0 0 10px #e74c3c;
+}
+.luxury-switch input:checked + .slider { background-color: rgba(46, 204, 113, 0.1); border-color: #2ecc71; }
+.luxury-switch input:checked + .slider:before { transform: translateX(20px); background-color: #2ecc71; box-shadow: 0 0 10px #2ecc71;}
+.status-text { font-size: 0.7rem; letter-spacing: 1px; font-weight: 700; color: #e74c3c; width: 55px; text-align: left; transition: color 0.4s; }
+.luxury-switch input:checked ~ .status-text { color: #2ecc71; }
+
+
+/* ==========================================
+   SIDE PANEL (ADD USER)
+   ========================================== */
+.side-panel-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
+    z-index: 1040; opacity: 0; visibility: hidden; transition: 0.4s ease;
+}
+.side-panel {
+    position: fixed; top: 0; right: -450px; width: 420px; height: 100vh;
+    background: #080808; border-left: 1px solid rgba(255,255,255,0.1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.9); z-index: 1050;
+    transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column;
+}
+.side-panel.active { right: 0; }
+.side-panel-overlay.active { opacity: 1; visibility: visible; }
+
+.panel-header { padding: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+.btn-close-panel { background: transparent; border: none; color: #888; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+.btn-close-panel:hover { color: #fff; transform: rotate(90deg); }
+.panel-body { padding: 30px; overflow-y: auto; }
+
+/* Panel Inputs */
+.form-floating-custom { position: relative; width: 100%; }
+.luxury-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: var(--font-body); font-size: 0.9rem; padding: 15px 0 10px 0; transition: all 0.3s ease; outline: none; border-radius: 0; }
+.luxury-input:focus { border-bottom-color: var(--color-gold-metallic); box-shadow: 0 5px 15px -5px rgba(212,175,55,0.1); }
+.form-floating-custom label { position: absolute; top: 15px; left: 0; color: #777; font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 1px; pointer-events: none; transition: all 0.3s ease; text-transform: uppercase; }
+.luxury-input:focus ~ label, .luxury-input:not(:placeholder-shown) ~ label { top: -10px; font-size: 0.65rem; color: var(--color-gold-metallic); font-weight: 600; }

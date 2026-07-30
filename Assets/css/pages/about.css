@@ -1,0 +1,55 @@
+/* =========================================
+   ABOUT US PAGE (MUSEUM/INFRACORP EDITORIAL)
+   ========================================= */
+.about-page-wrapper { background: var(--color-bg-matte); overflow: hidden; position: relative; }
+
+/* 1. KINETIC HERO */
+.abt-hero { position: relative; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.abt-marquee-container { position: absolute; width: 100%; display: flex; flex-direction: column; gap: 2vh; opacity: 0.1; z-index: 1; transform: rotate(-5deg) scale(1.2); }
+.abt-marquee { white-space: nowrap; font-family: var(--font-heading); font-size: 12vw; font-weight: 700; line-height: 1; }
+.outline-text { -webkit-text-stroke: 2px #fff; color: transparent; }
+.abt-hero-center { position: relative; z-index: 2; text-align: center; }
+.abt-hero-center h1 { font-size: 8vw; color: var(--color-gold-metallic); line-height: 1; margin: 0; letter-spacing: 10px; }
+.abt-hero-center p { font-family: var(--font-body); text-transform: uppercase; letter-spacing: 5px; color: #fff; margin-top: 20px; }
+
+/* 2. THE ARTIFACT EXHIBIT */
+.abt-artifact-section { position: relative; display: flex; justify-content: center; padding-top: 10vh; }
+.abt-artifact-visual { position: absolute; top: 20vh; left: 50%; transform: translateX(-50%); width: 35vw; height: 60vh; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+.artifact-img-wrap { width: 100%; height: 100%; overflow: hidden; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.05); background: #000; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8); }
+.artifact-img-wrap img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(40%) contrast(1.1); transform-origin: center; will-change: transform, filter; }
+.artifact-label { margin-top: 20px; font-family: var(--font-body); font-size: 0.6rem; color: #666; letter-spacing: 4px; text-transform: uppercase; }
+.abt-artifact-narrative { width: 100%; max-width: 1400px; padding: 0 5%; position: relative; z-index: 3; pointer-events: none; }
+.narrative-block { width: 40%; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); padding: 50px; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 4px; pointer-events: auto; }
+.left-block { margin-right: auto; }
+.right-block { margin-left: auto; }
+.n-chapter { font-family: var(--font-body); color: var(--color-gold-metallic); font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 20px; }
+.narrative-block h2 { font-size: 3rem; color: #fff; line-height: 1.1; margin-bottom: 20px; }
+.narrative-block p { color: #9e9e9e; font-size: 1.05rem; line-height: 1.8; margin: 0; }
+
+/* 3. HORIZONTAL ATELIER TRACK */
+.abt-horizontal-wrapper { background: #040404; height: 100vh; overflow: hidden; position: relative; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.abt-track { display: flex; height: 100%; width: max-content; padding: 0 10vw; align-items: center; gap: 10vw; }
+.abt-panel { height: 60vh; position: relative; display: flex; flex-direction: column; justify-content: center; }
+.panel-intro { width: 30vw; }
+.panel-intro h2 { font-size: 5rem; color: #fff; line-height: 1; margin-bottom: 20px; }
+.panel-intro p { font-size: 1.2rem; color: #777; letter-spacing: 2px; text-transform: uppercase; }
+.panel-card { width: 40vw; height: 70vh; }
+.p-card-inner { width: 100%; height: 100%; position: relative; overflow: hidden; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.05); }
+.p-card-inner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6) grayscale(30%); transition: 0.8s ease; }
+.p-card-inner:hover img { filter: brightness(0.9) grayscale(0%); transform: scale(1.05); }
+.p-card-content { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%); }
+.p-card-content h3 { font-family: var(--font-heading); font-size: 2.5rem; color: var(--color-gold-metallic); margin-bottom: 10px; }
+.p-card-content p { color: #e0e0e0; font-size: 1rem; line-height: 1.6; max-width: 80%; margin: 0; }
+
+/* 4. FOUNDER MONOLITH */
+.abt-founder-section { padding: 150px 0; background: #000; }
+.founder-monolith { background: #0a0a0a; border: 1px solid rgba(212, 175, 55, 0.1); border-radius: 4px; overflow: hidden; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.9); }
+.f-img-box { position: relative; height: 100%; min-height: 500px; overflow: hidden; }
+.f-img-box img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; filter: grayscale(100%) contrast(1.1); transition: 0.8s ease; }
+.founder-monolith:hover .f-img-box img { filter: grayscale(30%) contrast(1.1); transform: scale(1.03); }
+.f-overlay-gradient { position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, #0a0a0a 100%); }
+.f-text-box { padding: 80px 60px; position: relative; }
+.f-text-box .quote-icon { font-size: 4rem; color: rgba(212, 175, 55, 0.1); position: absolute; top: 50px; left: 50px; }
+.f-text-box blockquote { font-family: var(--font-heading); font-size: 2.5rem; color: #fff; line-height: 1.3; font-style: italic; margin-bottom: 40px; position: relative; z-index: 2; font-weight: 400; }
+.f-author h4 { font-family: var(--font-body); color: var(--color-gold-metallic); margin: 0 0 5px 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
+.f-author span { font-family: var(--font-body); color: #666; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; }

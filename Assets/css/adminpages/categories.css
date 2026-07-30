@@ -1,0 +1,165 @@
+/* ==========================================================================
+   VELVET VOGUE - CATEGORIES CSS
+   ========================================================================== */
+
+.font-heading { font-family: var(--font-heading); }
+.font-body { font-family: var(--font-body); }
+.massive-title { font-family: var(--font-heading); font-size: 2.8rem; font-weight: 700; letter-spacing: 1px; color: #fff;}
+.simple-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: #888; display: block; }
+.badge-count { background: rgba(212, 175, 55, 0.1); color: var(--color-gold-metallic); border: 1px solid rgba(212, 175, 55, 0.3); padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+
+/* The Studio Console */
+.atelier-card { background: #080808; border-radius: 4px; padding: 35px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); border: 1px solid var(--border-subtle); transition: 0.4s ease; }
+.top-glow-card { border-top: 2px solid var(--color-gold-metallic); }
+.card-top-flare { position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--color-gold-metallic), transparent); box-shadow: 0 0 15px var(--color-gold-metallic); opacity: 0.5; z-index: 1; }
+.form-section-title { font-family: var(--font-heading); color: var(--color-gold-metallic); font-size: 1.3rem; letter-spacing: 1px; }
+
+/* Form Elements */
+.form-floating-custom { position: relative; width: 100%; }
+.luxury-input { width: 100%; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); color: #fff; font-family: var(--font-body); font-size: 0.95rem; padding: 15px 0 10px 0; transition: all 0.3s ease; outline: none; border-radius: 0; }
+.luxury-input:focus { border-bottom-color: var(--color-gold-metallic); box-shadow: 0 5px 15px -5px rgba(212,175,55,0.1); }
+.form-floating-custom label { position: absolute; top: 15px; left: 0; color: #777; font-family: var(--font-body); font-size: 0.8rem; letter-spacing: 1px; pointer-events: none; transition: all 0.3s ease; text-transform: uppercase; }
+.luxury-input:focus ~ label, .luxury-input:not(:placeholder-shown) ~ label { top: -10px; font-size: 0.65rem; color: var(--color-gold-metallic); font-weight: 600; }
+
+/* Switch */
+.luxury-switch { position: relative; display: inline-block; width: 46px; height: 22px; }
+.luxury-switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #222; transition: .4s; border-radius: 34px; border: 1px solid var(--border-subtle); }
+.slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: #666; transition: .4s; border-radius: 50%; }
+.luxury-switch input:checked + .slider { background-color: rgba(212,175,55,0.1); border-color: var(--color-gold-metallic); }
+.luxury-switch input:checked + .slider:before { transform: translateX(24px); background-color: var(--color-gold-metallic); box-shadow: 0 0 10px var(--color-gold-metallic); }
+
+/* Banner Dropzone */
+.luxury-dropzone { width: 100%; height: 140px; border: 1px dashed var(--border-subtle); border-radius: 4px; background: rgba(255,255,255,0.02); position: relative; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; overflow: hidden; background-size: cover; background-position: center; }
+.luxury-dropzone:hover { background-color: rgba(212,175,55,0.03); border-color: var(--color-gold-metallic); }
+.dropzone-content { text-align: center; pointer-events: none; z-index: 2; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 4px; backdrop-filter: blur(2px); transition: 0.3s;}
+.dropzone-icon { font-size: 1.5rem; color: #ccc; margin-bottom: 5px; display: block; }
+.luxury-dropzone:hover .dropzone-icon { color: var(--color-gold-metallic); }
+.dropzone-text { display: block; color: #eee; font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 1px; }
+
+/* ==========================================
+   WORLD CLASS PREMIUM BUTTONS
+   ========================================== */
+.btn-luxury-solid { 
+    position: relative; 
+    background: var(--color-gold-metallic); 
+    color: #000; 
+    border: none; 
+    padding: 16px 35px; /* Slightly taller for luxury feel */
+    font-family: var(--font-body); 
+    font-weight: 700; 
+    font-size: 0.85rem; 
+    letter-spacing: 3px; 
+    text-transform: uppercase; 
+    overflow: hidden; 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 2px; 
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Supreme easing */
+    cursor: pointer; 
+    z-index: 1;
+}
+
+/* The Cinematic Shimmer Effect */
+.btn-luxury-solid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+}
+
+.btn-luxury-solid:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 30px -10px rgba(212, 175, 55, 0.8), 0 5px 15px rgba(212, 175, 55, 0.3); 
+}
+
+.btn-luxury-solid:hover::before {
+    left: 150%; /* Triggers the sweep */
+}
+
+.btn-icon {
+    position: relative;
+    z-index: 2;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-solid:hover .btn-icon {
+    transform: translateX(6px); /* Arrow slides right */
+}
+
+/* The Ghost Cancel Button */
+.btn-action-ghost { 
+    position: relative;
+    background: transparent; 
+    border: none; 
+    padding: 5px 0; 
+    transition: 0.3s; 
+    text-transform: uppercase; 
+    font-family: var(--font-body); 
+    font-weight: 600; 
+    letter-spacing: 1px; 
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: #888;
+    overflow: hidden;
+}
+
+/* Underline Sweep Effect */
+.btn-action-ghost::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: #e74c3c;
+    transition: width 0.3s ease;
+}
+
+.btn-action-ghost:hover { 
+    color: #e74c3c !important; 
+}
+
+.btn-action-ghost:hover::after {
+    width: 100%;
+}
+
+
+/* ==========================================
+   CATEGORY CARDS (The Visual Grid)
+   ========================================== */
+.cat-card { height: 220px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.05); transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); cursor: pointer; background: #000;}
+.cat-card:hover { border-color: var(--color-gold-metallic); transform: translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.8); }
+
+.cat-card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: 1s ease; opacity: 0.6; filter: grayscale(40%); }
+.cat-card:hover .cat-card-bg { transform: scale(1.05); opacity: 0.8; filter: grayscale(0%); }
+
+.cat-card-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 100%); transition: 0.5s; }
+.cat-card:hover .cat-card-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.95) 100%); }
+
+.cat-inactive .cat-card-bg { filter: grayscale(100%); opacity: 0.3; }
+
+.cat-count-badge { background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.1); color: #fff; padding: 5px 12px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 2px; }
+
+.cat-title { font-family: var(--font-heading); color: #fff; font-size: 1.8rem; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase;}
+.cat-card:hover .cat-title { color: var(--color-gold-metallic); }
+
+.cat-slug { font-family: var(--font-body); color: #aaa; font-size: 0.75rem; letter-spacing: 2px; }
+
+/* Floating Actions on Hover */
+.cat-card-actions { position: absolute; top: 15px; right: 15px; display: flex; gap: 8px; opacity: 0; transform: translateY(-10px); transition: 0.4s ease; z-index: 5; }
+.cat-card:hover .cat-card-actions { opacity: 1; transform: translateY(0); }
+.action-btn { width: 35px; height: 35px; border-radius: 50%; background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.1); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; font-size: 0.8rem; backdrop-filter: blur(4px); }
+.action-btn:hover { background: #fff; color: #000; transform: scale(1.1); }
+.delete-btn:hover { background: #e74c3c; color: #fff; border-color: #e74c3c; }
+
+/* Edit Mode Pulse Effect */
+.editing-pulse { border-color: var(--color-gold-metallic); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
