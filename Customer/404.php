@@ -37,13 +37,64 @@ if (isset($_SESSION['userID']) && isset($_SESSION['firstName'])) {
     <link rel="stylesheet" href="<?= vv_e(vv_versioned_asset('../Assets/css/style.css')) ?>">
 
     <link rel="stylesheet" href="<?= vv_e(vv_versioned_asset('../Assets/css/pages/404.css')) ?>">
+
+    <style>
+        .vv-back-button {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            z-index: 60;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 16px;
+            border: 1px solid rgba(212, 175, 55, 0.75);
+            border-radius: 3px;
+            background: rgba(5, 5, 5, 0.88);
+            color: var(--color-gold-metallic, #d4af37);
+            font-family: "Montserrat", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+        }
+
+        .vv-back-button:hover,
+        .vv-back-button:focus-visible {
+            background: var(--color-gold-metallic, #d4af37);
+            color: #050505;
+            transform: translateX(-2px);
+            outline: none;
+        }
+
+        @media (max-width: 576px) {
+            .vv-back-button {
+                top: 12px;
+                left: 12px;
+                padding: 10px 12px;
+            }
+
+            .vv-back-button span {
+                display: none;
+            }
+        }
+    </style>
+
 </head>
 
 <body class="vv-404-intro-active" style="background-color: #000; overflow-x: hidden;">
 
+    <button type="button" id="btnGoBack" class="vv-back-button" aria-label="Go back to the previous page">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        <span>Back</span>
+    </button>
+
     <div id="overrideAlert" class="override-alert">
-        <h1 class="mega-glitch" data-text="SYSTEM OVERRIDE" style="font-size: 4rem;">SYSTEM OVERRIDE</h1>
-        <p class="font-monospace text-white mt-2 fs-5">RESTRICTIONS LIFTED. INITIATING PROTOCOL.</p>
+        <h1 class="mega-glitch" data-text="BONUS GAME" style="font-size: 4rem;">BONUS GAME</h1>
+        <p class="font-monospace text-white mt-2 fs-5">GET READY TO PLAY AND WIN.</p>
     </div>
 
     <div id="truckCrashOverlay" class="crash-intro-screen" aria-hidden="true">
@@ -122,7 +173,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['firstName'])) {
                 </h2>
                 <p class="text-silver font-monospace mx-auto mb-4" style="max-width: 600px; font-size: 0.85rem; line-height: 1.8;">
                     The page you are looking for doesn't exist. Before you go, try catching the falling clothes! <br>
-                    <span class="gold-text fw-bold">RUMOR: A restricted 15% Syndicate Access Key is hidden in the debris.</span>
+                    <span class="gold-text fw-bold">Hint: A special 15% discount coupon is hidden in the falling items!</span>
                 </p>
             </div>
 
@@ -206,6 +257,21 @@ if (isset($_SESSION['userID']) && isset($_SESSION['firstName'])) {
 
     <script src="<?= vv_e(vv_versioned_asset('../Assets/js/security.js')) ?>" defer></script>
     <script src="<?= vv_e(vv_versioned_asset('../Assets/js/pages/404.js')) ?>" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const backButton = document.getElementById('btnGoBack');
+            if (!backButton) return;
+
+            backButton.addEventListener('click', function () {
+                if (document.referrer && window.history.length > 1) {
+                    window.history.back();
+                    return;
+                }
+
+                window.location.href = 'index.php';
+            });
+        });
+    </script>
 </body>
 
 </html>
