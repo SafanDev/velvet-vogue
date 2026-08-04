@@ -1,71 +1,103 @@
+<div align="center">
+
 # Velvet Vogue
 
-Velvet Vogue is a fashion e-commerce web application.
+### Full-Stack Fashion E-Commerce Platform
 
-The system includes a customer shopping experience and an administrator dashboard for managing products, categories, users, orders, coupons, reviews, inquiries, and store settings.
+A responsive e-commerce application with a complete customer shopping experience and an administrator dashboard.
+
+<br>
+
+[![Live Demo](https://img.shields.io/badge/Live_Demo-View_Website-C9A96E?style=for-the-badge&logo=googlechrome&logoColor=white)](https://velvetvogue.gamer.gd)
+
+</div>
+
+---
+
+![Velvet Vogue project preview](docs/velvet-vogue-preview.webp)
+
+## Overview
+
+Velvet Vogue is a full-stack fashion e-commerce platform built with PHP and MySQL.
+
+Customers can browse products, manage accounts, save items, use coupons and place orders. Administrators can manage products, categories, inventory, customers, orders, reviews, inquiries and store settings.
 
 ## Features
 
-* Customer registration and login
-* Product catalogue with search and filters
-* Product variants including size, colour, price, and stock
-* Shopping cart and wishlist
-* Coupon discounts
-* Cash-on-delivery checkout
-* Order history, invoices, and tracking
-* Customer reviews and inquiries
-* Customer profile and address management
-* Administrator dashboard
-* Product and category management
-* Order and customer management
-* Responsive design
-* Custom 404 page
+### Customer Experience
 
-## Technologies
+- Registration, login and persistent authentication
+- Product catalogue with search, filtering and sorting
+- Product variants for size, colour, price and stock
+- Shopping cart and wishlist
+- Coupon discounts
+- Cash-on-delivery checkout
+- Order history, invoices and tracking
+- Product reviews and customer inquiries
+- Profile and delivery-address management
+- Responsive desktop and mobile interface
+- Interactive custom 404 page
 
-* PHP
-* MySQL
-* HTML5
-* CSS3
-* JavaScript
-* Bootstrap
+### Administrator Dashboard
+
+- Dashboard statistics and store overview
+- Product, category and variant management
+- Product image and inventory management
+- Customer and account management
+- Order processing and status updates
+- Coupon management
+- Review moderation
+- Inquiry management
+- Store configuration
+
+## Tech Stack
+
+**Frontend**
+
+`HTML5` · `CSS3` · `JavaScript` · `Bootstrap` · `GSAP`
+
+**Backend**
+
+`PHP` · `PDO` · `MySQL`
+
+**Development**
+
+`Git` · `GitHub` · `XAMPP` · `phpMyAdmin`
+
+## Security and Quality
+
+The application includes:
+
+- Prepared PDO statements
+- Password hashing
+- CSRF and same-origin request protection
+- Secure session handling
+- Signed persistent-login cookies
+- Role-based administrator access
+- Server-side input validation
+- Image type, size and path validation
+- Rate limiting for sensitive actions
+- Security headers and production checks
+- Command-line security self-tests
 
 ## Local Setup
 
-1. Install XAMPP or another PHP and MySQL environment.
-2. Copy the project into the web server directory.
-3. Create a MySQL database.
-4. Import the Velvet Vogue database.
-5. Copy `.env.example` and rename the copy to `.env`.
-6. Update the database settings inside `.env`.
-7. Start Apache and MySQL.
-8. Open the project through `localhost`.
+### Requirements
 
-Example local address:
+- PHP 8.1 or newer
+- MySQL or MariaDB
+- Apache or another PHP-compatible web server
+- PHP extensions:
+  - `pdo_mysql`
+  - `mbstring`
+  - `fileinfo`
+  - `dom`
+  - `json`
+  - `openssl`
 
-```text
-http://localhost/Project/velvet-vogue-main/
-```
+### Installation
 
-## Environment Configuration
-
-The application requires a `.env` file containing the application URL, application key, and database connection details.
-
-
-## Testing
-
-The project includes the following scripts:
+1. Clone the repository:
 
 ```bash
-php scripts/security-self-test.php
-php scripts/preflight.php
-```
-
-
-## Payment
-
-Payments is enabled.
-
-## Project Purpose
-
-This project was created for educational use. The products, users, images, and order information included in the demonstration database are fictional.
+git clone https://github.com/SafanDev/velvet-vogue.git

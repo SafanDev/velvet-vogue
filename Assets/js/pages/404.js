@@ -883,7 +883,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.createElement("span");
 
             couponIcon.className =
-                   "falling-key falling-key-icon";
+                "falling-key";
 
             couponIcon.textContent =
                 "🎫";

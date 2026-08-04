@@ -82,7 +82,7 @@ if (isset($_SESSION['userID']) && isset($_SESSION['firstName'])) {
             }
         }
     </style>
-
+    
 </head>
 
 <body class="vv-404-intro-active" style="background-color: #000; overflow-x: hidden;">
