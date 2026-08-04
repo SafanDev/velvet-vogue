@@ -64,7 +64,7 @@ php scripts/preflight.php
 
 ## Payment
 
-The current portfolio version supports cash on delivery. Online card payments are not enabled.
+Payments is enabled.
 
 ## Project Purpose
 
