@@ -12,6 +12,7 @@ Thumbs.db
 /node_modules/
 /coverage/
 *.sql
+!database/schema.sql
 *.sqlite
 *.bak
 *.old
