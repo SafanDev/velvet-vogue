@@ -4,7 +4,7 @@
 
 ### Full-Stack Fashion E-Commerce Platform
 
-A responsive e-commerce application with a complete customer shopping experience and an administrator dashboard.
+A responsive fashion shopping platform with customer accounts, product management, checkout and an administrator dashboard.
 
 <br>
 
@@ -18,86 +18,61 @@ A responsive e-commerce application with a complete customer shopping experience
 
 ## Overview
 
-Velvet Vogue is a full-stack fashion e-commerce platform built with PHP and MySQL.
+Velvet Vogue is a full-stack e-commerce platform built with PHP, MySQL and JavaScript.
 
-Customers can browse products, manage accounts, save items, use coupons and place orders. Administrators can manage products, categories, inventory, customers, orders, reviews, inquiries and store settings.
+Customers can browse products, manage accounts, save items, apply coupons and place orders. Administrators can manage products, inventory, customers, orders, reviews and store settings.
 
-## Features
+## Main Features
 
-### Customer Experience
+### Customer
 
-- Registration, login and persistent authentication
-- Product catalogue with search, filtering and sorting
-- Product variants for size, colour, price and stock
+- Product search, filtering and sorting
+- Product size, colour and stock variants
 - Shopping cart and wishlist
 - Coupon discounts
 - Cash-on-delivery checkout
 - Order history, invoices and tracking
-- Product reviews and customer inquiries
-- Profile and delivery-address management
-- Responsive desktop and mobile interface
-- Interactive custom 404 page
+- Reviews, inquiries and saved addresses
+- Responsive interface and custom 404 page
 
-### Administrator Dashboard
+### Administrator
 
-- Dashboard statistics and store overview
-- Product, category and variant management
-- Product image and inventory management
-- Customer and account management
-- Order processing and status updates
-- Coupon management
-- Review moderation
-- Inquiry management
-- Store configuration
+- Dashboard statistics
+- Product and category management
+- Inventory and product-image management
+- Customer and order management
+- Coupon and review management
+- Inquiry and store-settings management
 
 ## Tech Stack
 
-**Frontend**
+`PHP` · `MySQL` · `PDO` · `JavaScript` · `HTML5` · `CSS3` · `Bootstrap` · `GSAP`
 
-`HTML5` · `CSS3` · `JavaScript` · `Bootstrap` · `GSAP`
-
-**Backend**
-
-`PHP` · `PDO` · `MySQL`
-
-**Development**
-
-`Git` · `GitHub` · `XAMPP` · `phpMyAdmin`
-
-## Security and Quality
-
-The application includes:
+## Security
 
 - Prepared PDO statements
 - Password hashing
-- CSRF and same-origin request protection
+- CSRF protection
 - Secure session handling
-- Signed persistent-login cookies
-- Role-based administrator access
-- Server-side input validation
-- Image type, size and path validation
-- Rate limiting for sensitive actions
-- Security headers and production checks
-- Command-line security self-tests
+- Role-based access control
+- Server-side validation
+- Upload validation
+- Rate limiting
+- Security headers
 
-## Local Setup
+<details>
+<summary><strong>Local Setup</strong></summary>
 
 ### Requirements
 
 - PHP 8.1 or newer
 - MySQL or MariaDB
-- Apache or another PHP-compatible web server
-- PHP extensions:
-  - `pdo_mysql`
-  - `mbstring`
-  - `fileinfo`
-  - `dom`
-  - `json`
-  - `openssl`
+- Apache or another PHP-compatible server
+- `pdo_mysql`, `mbstring`, `fileinfo`, `dom`, `json` and `openssl`
 
 ### Installation
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/SafanDev/velvet-vogue.git
+git clone https://github.com/SafanDev/velvet-vogue.git`
