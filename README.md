@@ -4,7 +4,7 @@
 
 ### Full-Stack Fashion E-Commerce Platform
 
-A responsive fashion shopping platform with customer accounts, product management, checkout and an administrator dashboard.
+A responsive online fashion store with customer accounts, checkout, product management and an administrator dashboard.
 
 <br>
 
@@ -16,63 +16,60 @@ A responsive fashion shopping platform with customer accounts, product managemen
 
 ![Velvet Vogue project preview](docs/velvet-vogue-preview.webp)
 
-## Overview
+## About
 
-Velvet Vogue is a full-stack e-commerce platform built with PHP, MySQL and JavaScript.
+Velvet Vogue is a full-stack e-commerce project built with PHP, MySQL and JavaScript.
 
-Customers can browse products, manage accounts, save items, apply coupons and place orders. Administrators can manage products, inventory, customers, orders, reviews and store settings.
+It includes a complete customer shopping experience and an administrator dashboard for managing products, inventory, customers and orders.
 
-## Main Features
+## Features
 
-### Customer
-
-- Product search, filtering and sorting
-- Product size, colour and stock variants
-- Shopping cart and wishlist
-- Coupon discounts
-- Cash-on-delivery checkout
-- Order history, invoices and tracking
-- Reviews, inquiries and saved addresses
-- Responsive interface and custom 404 page
-
-### Administrator
-
-- Dashboard statistics
-- Product and category management
-- Inventory and product-image management
-- Customer and order management
-- Coupon and review management
-- Inquiry and store-settings management
+| Customer Experience | Administrator Dashboard |
+|---|---|
+| Product search and filtering | Dashboard statistics |
+| Size, colour and stock variants | Product and category management |
+| Shopping cart and wishlist | Inventory management |
+| Coupon discounts | Customer management |
+| Cash-on-delivery checkout | Order processing |
+| Order history and tracking | Coupon and review management |
+| Reviews and inquiries | Store settings |
+| Responsive interface | Inquiry management |
 
 ## Tech Stack
 
-`PHP` · `MySQL` · `PDO` · `JavaScript` · `HTML5` · `CSS3` · `Bootstrap` · `GSAP`
+<div align="center">
+
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=black)
+
+</div>
 
 ## Security
 
-- Prepared PDO statements
+- Prepared PDO database queries
 - Password hashing
 - CSRF protection
-- Secure session handling
-- Role-based access control
+- Secure sessions
+- Role-based administrator access
 - Server-side validation
 - Upload validation
 - Rate limiting
-- Security headers
 
 <details>
-<summary><strong>Local Setup</strong></summary>
+<summary><strong>Run Locally</strong></summary>
 
 ### Requirements
 
 - PHP 8.1 or newer
 - MySQL or MariaDB
-- Apache or another PHP-compatible server
-- `pdo_mysql`, `mbstring`, `fileinfo`, `dom`, `json` and `openssl`
+- Apache or XAMPP
 
-### Installation
+### Setup
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/SafanDev/velvet-vogue.git`
+git clone https://github.com/SafanDev/velvet-vogue.git
